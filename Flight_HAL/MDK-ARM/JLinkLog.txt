@@ -1,0 +1,22 @@
+
+T43F8 003:308 SEGGER J-Link V4.90 Log File (0000ms, 0001ms total)
+T43F8 003:308 DLL Compiled: Jul 28 2014 10:35:20 (0001ms, 0002ms total)
+T43F8 003:308 Logging started @ 2024-07-27 23:27 (0001ms, 0002ms total)
+T43F8 003:309 JLINK_SetWarnOutHandler(...) (0000ms, 0002ms total)
+T43F8 003:309 JLINK_OpenEx(...)
+  ***** Error: Can not connect to J-Link via USB.  returns "Can not connect to J-Link via USB." (0000ms, 0002ms total)
+
+  ***** API Error: API JLINK_GetHardwareVersion function called before JLINKARM_Open()
+T43F8 003:309 
+  ***** Error: Can not connect to J-Link via USB.JLINK_IsOpen()  returns 0x00 (0000ms, 0002ms total)
+T43F8 004:461 JLINK_EMU_SelectByUSBSN(SerialNo = 0)  returns 0xFFFFFFFF (0000ms, 0002ms total)
+T43F8 004:472 JLINK_EnableLog(...) (0000ms, 0013ms total)
+T43F8 004:472 JLINK_SetWarnOutHandler(...) (0000ms, 0013ms total)
+T43F8 004:472 JLINK_OpenEx(...)
+  ***** Error: Can not connect to J-Link via USB.  returns "Can not connect to J-Link via USB." (0000ms, 0013ms total)
+
+  ***** API Error: API JLINK_GetHardwareVersion function called before JLINKARM_Open()
+T43F8 004:472 
+  ***** Error: Can not connect to J-Link via USB.JLINK_Close() (0000ms, 0013ms total)
+T43F8 015:996  (0000ms, 0013ms total)
+T43F8 015:996 Closed (0000ms, 0013ms total)
