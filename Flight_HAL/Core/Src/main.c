@@ -18,6 +18,8 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "adc.h"
+#include "dma.h"
 #include "tim.h"
 #include "usart.h"
 #include "gpio.h"
@@ -45,7 +47,7 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-
+uint32_t pData[1024];
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -87,10 +89,10 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
-  MX_TIM1_Init();
+  MX_DMA_Init();
   MX_TIM2_Init();
-  MX_TIM3_Init();
   MX_USART3_UART_Init();
+  MX_ADC1_Init();
   /* USER CODE BEGIN 2 */
   // 启动pwm,当我们用寄存器初始化他不用开,而hal库却要开
   HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_1);
@@ -110,9 +112,15 @@ int main(void)
   __HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_2, 499); // 右前
   __HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_1, 499); // 左前
   __HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_4, 499); // 左后
-
+  /**
+   * @brief test ADC
+   *
+   */
+  HAL_ADC_Start_DMA(&hadc1, (uint32_t *)&pData[0], 1);
   /* USER CODE END 2 */
+  /* USER CODE BEGIN 3 */
 
+  /* USER CODE END 3 */
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
@@ -132,6 +140,7 @@ void SystemClock_Config(void)
 {
   RCC_OscInitTypeDef RCC_OscInitStruct = {0};
   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
+  RCC_PeriphCLKInitTypeDef PeriphClkInit = {0};
 
   /** Initializes the RCC Oscillators according to the specified parameters
    * in the RCC_OscInitTypeDef structure.
@@ -157,6 +166,12 @@ void SystemClock_Config(void)
   RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
 
   if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_2) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_ADC;
+  PeriphClkInit.AdcClockSelection = RCC_ADCPCLK2_DIV6;
+  if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit) != HAL_OK)
   {
     Error_Handler();
   }
