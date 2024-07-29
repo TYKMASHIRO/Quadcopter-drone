@@ -1,6 +1,10 @@
 {
     "files.associations": {
         "*.embeddedhtml": "html",
-        "tim.h": "c"
+        "tim.h": "c",
+        "gpio.h": "c",
+        "adc.h": "c",
+        "misc.h": "c",
+        "stm32f103xb.h": "c"
     }
 }

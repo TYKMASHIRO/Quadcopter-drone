@@ -29,7 +29,7 @@ extern "C" {
 #include "main.h"
 
 /* USER CODE BEGIN Includes */
-
+#include "stm32f103xb.h"
 /* USER CODE END Includes */
 
 extern ADC_HandleTypeDef hadc1;
