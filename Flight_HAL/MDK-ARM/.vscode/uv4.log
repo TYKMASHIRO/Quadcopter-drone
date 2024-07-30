@@ -1,8 +1,31 @@
-*** Using Compiler 'V5.06 update 5 (build 528)', folder: 'D:\works\Keil5\ARM\ARMCC\Bin'
-Build target 'Flight_HAL'
-compiling adc.c...
-linking...
-Program Size: Code=9620 RO-data=312 RW-data=80 ZI-data=6136  
-FromELF: creating hex file...
-"Flight_HAL\Flight_HAL.axf" - 0 Error(s), 0 Warning(s).
-Build Time Elapsed:  00:00:01
+Load "Flight_HAL\\Flight_HAL.axf" 
+Set JLink Project File to "c:\Users\19062\Desktop\fuben\Quadcopter-drone\Flight_HAL\MDK-ARM\JLinkSettings.ini"* JLink Info: Device "STM32F103C8" selected (64 KB flash, 20 KB RAM).
+
+JLink info:
+------------
+DLL: V4.90 , compiled Jul 28 2014 10:35:20
+Firmware: J-Link ARM-OB STM32 compiled Aug 22 2012 19:52:04
+Hardware: V7.00
+S/N : 20090928 
+Feature(s) : RDI,FlashDL,FlashBP,JFlash,GDB 
+
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: Found SWD-DP with ID 0x1BA01477
+* JLink Info: Found Cortex-M3 r1p1, Little endian.
+* JLink Info: FPUnit: 6 code (BP) slots and 2 literal slots
+* JLink Info: TPIU fitted.
+ROMTableAddr = 0xE00FF003
+
+Target info:
+------------
+Device: STM32F103C8
+VTarget = 3.300V
+State of Pins: TCK: 0, TDI: 0, TDO: 1, TMS: 0, TRES: 1, TRST: 1
+Hardware-Breakpoints: 6
+Software-Breakpoints: 8192
+Watchpoints:          4
+JTAG speed: 4000 kHz
+
+Erase Done.Programming Done.Verify OK.**JLink Warning: Mis-aligned memory write: Address: 0x20000000, NumBytes: 2, Alignment: 2 (Halfword-aligned)
+Application running ...
+Flash Load finished at 00:35:51

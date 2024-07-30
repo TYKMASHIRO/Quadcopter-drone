@@ -1,8 +1,7 @@
 #ifndef _DELAY_H
-#define _DELAY_H 
+#define _DELAY_H
 
-
-#include "stm32f10x.h"
+#include "stm32f1xx_hal.h"
 
 #define	IRQ_1MS	1000
 #define	IRQ_2MS	2000
