@@ -3,6 +3,10 @@
 
 #include "GPIO.H"
 #include "sys.h"
+
+void LED_ON(GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin);
+void LED_OFF(GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin);
+void LED_Toggle(GPIO_TypeDef *GPIOx, uint16_t GPIO_Pin);
 #define LED1(x) x ? (GPIOB->BSRR = GPIO_Pin_8) : (GPIOB->BRR = GPIO_Pin_8)
 #define LED2(x) x ? (GPIOB->BSRR = GPIO_Pin_5) : (GPIOB->BRR = GPIO_Pin_5)
 #define LED3(x) x ? (GPIOB->BSRR = GPIO_Pin_10) : (GPIOB->BRR = GPIO_Pin_10)

@@ -39,4 +39,4 @@ flight_hal\led.o: ../USER/ALL_DEFINE.h
 flight_hal\led.o: ../USER/INIT.h
 flight_hal\led.o: ../USER/sys.h
 flight_hal\led.o: ../Core/Inc/TIM.h
-flight_hal\led.o: ..\HARDWARE\LED.h
+flight_hal\led.o: ../HARDWARE/LED.h

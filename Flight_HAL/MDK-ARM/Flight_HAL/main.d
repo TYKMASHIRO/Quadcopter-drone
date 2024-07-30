@@ -36,3 +36,11 @@ flight_hal\main.o: ../Core/Inc/tim.h
 flight_hal\main.o: ../Core/Inc/usart.h
 flight_hal\main.o: D:\works\Keil5\ARM\ARMCC\Bin\..\include\stdio.h
 flight_hal\main.o: ../Core/Inc/gpio.h
+flight_hal\main.o: ../HARDWARE/LED.h
+flight_hal\main.o: ../USER/sys.h
+flight_hal\main.o: ../USER/delay.h
+flight_hal\main.o: ../USER/ALL_DATA.h
+flight_hal\main.o: ../USER/ALL_DEFINE.h
+flight_hal\main.o: ../USER/INIT.h
+flight_hal\main.o: ../USER/sys.h
+flight_hal\main.o: ../HARDWARE/LED.h

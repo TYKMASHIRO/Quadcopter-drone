@@ -1,5 +1,5 @@
 Load "Flight_HAL\\Flight_HAL.axf" 
-Set JLink Project File to "c:\Users\19062\Desktop\fuben\Quadcopter-drone\Flight_HAL\MDK-ARM\JLinkSettings.ini"* JLink Info: Device "STM32F103C8" selected (64 KB flash, 20 KB RAM).
+Set JLink Project File to "c:\Users\19062\Desktop\Quadcopter-drone\Flight_HAL\MDK-ARM\JLinkSettings.ini"* JLink Info: Device "STM32F103C8" selected (64 KB flash, 20 KB RAM).
 
 JLink info:
 ------------
@@ -28,4 +28,4 @@ JTAG speed: 4000 kHz
 
 Erase Done.Programming Done.Verify OK.**JLink Warning: Mis-aligned memory write: Address: 0x20000000, NumBytes: 2, Alignment: 2 (Halfword-aligned)
 Application running ...
-Flash Load finished at 00:35:51
+Flash Load finished at 00:58:36

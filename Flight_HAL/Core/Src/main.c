@@ -23,7 +23,7 @@
 #include "tim.h"
 #include "usart.h"
 #include "gpio.h"
-#include "stm32f1xx_hal_gpio.h"
+#include "LED.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 /* USER CODE END Includes */
@@ -123,15 +123,15 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-    if (HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_1) == 0)
+    // LED_Toggle(GPIOB, GPIO_PIN_1);
+    /* USER CODE BEGIN 3 */
+    if (HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_1) == 0)
     {
-      // __HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_3, 499); // 右后
+      __HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_3, 499); // 右后
       // __HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_2, 499); // 右前
       // __HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_1, 499); // 左前
       // __HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_4, 499); // 左后
     }
-
-    /* USER CODE BEGIN 3 */
 
     /* USER CODE END 3 */
   }
