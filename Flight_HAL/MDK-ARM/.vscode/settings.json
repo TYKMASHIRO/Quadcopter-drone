@@ -5,6 +5,11 @@
         "gpio.h": "c",
         "adc.h": "c",
         "misc.h": "c",
-        "stm32f103xb.h": "c"
+        "stm32f103xb.h": "c",
+        "led.h": "c",
+        "sys.h": "c",
+        "all_define.h": "c",
+        "stm32f1xx_hal.h": "c",
+        "delay.h": "c"
     }
 }

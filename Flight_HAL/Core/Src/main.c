@@ -23,7 +23,7 @@
 #include "tim.h"
 #include "usart.h"
 #include "gpio.h"
-
+#include "LED.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 /* USER CODE END Includes */
@@ -99,38 +99,43 @@ int main(void)
   HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_3);
   HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_4);
   /**
-   * @brief 左前：HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
+   *  左前：HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
    *        右前：HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_2);
    *        左后：HAL_TIM_PWM_Start(&htim4, TIM_CHANNEL_4);
    *        右后：HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_3);
    */
   /**
-   * @brief 测试pwm，占空比50%
+   * 测试pwm，占空比50%
    */
-  __HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_3, 499); // 右后
-  __HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_2, 499); // 右前
-  __HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_1, 499); // 左前
-  __HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_4, 499); // 左后
+  // __HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_3, 499); // 右后
+  // __HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_2, 499); // 右前
+  // __HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_1, 499); // 左前
+  // __HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_4, 499); // 左后
   /**
-   * @brief test ADC
+   *  test ADC
    *
    */
-  HAL_ADC_Start_DMA(&hadc1, (uint32_t *)&pData[0], 1);
+  // HAL_ADC_Start_DMA(&hadc1, (uint32_t *)&pData[0], 1);
   /* USER CODE END 2 */
-  /* USER CODE BEGIN 3 */
 
-  /* USER CODE END 3 */
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
     /* USER CODE END WHILE */
-
+    // LED_Toggle(GPIOB, GPIO_PIN_1);
     /* USER CODE BEGIN 3 */
-  }
-  /* USER CODE END 3 */
-}
+    if (HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_1) == 0)
+    {
+      __HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_3, 499); // 右后
+      // __HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_2, 499); // 右前
+      // __HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_1, 499); // 左前
+      // __HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_4, 499); // 左后
+    }
 
+    /* USER CODE END 3 */
+  }
+}
 /**
  * @brief System Clock Configuration
  * @retval None

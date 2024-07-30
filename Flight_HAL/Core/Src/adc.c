@@ -19,6 +19,7 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "adc.h"
+
 /* USER CODE BEGIN 0 */
 
 /* USER CODE END 0 */
@@ -41,7 +42,7 @@ void MX_ADC1_Init(void)
   /* USER CODE END ADC1_Init 1 */
 
   /** Common config
-   */
+  */
   hadc1.Instance = ADC1;
   hadc1.Init.ScanConvMode = ADC_SCAN_DISABLE;
   hadc1.Init.ContinuousConvMode = ENABLE;
@@ -55,7 +56,7 @@ void MX_ADC1_Init(void)
   }
 
   /** Configure Regular Channel
-   */
+  */
   sConfig.Channel = ADC_CHANNEL_8;
   sConfig.Rank = ADC_REGULAR_RANK_1;
   sConfig.SamplingTime = ADC_SAMPLETIME_1CYCLE_5;
@@ -66,17 +67,18 @@ void MX_ADC1_Init(void)
   /* USER CODE BEGIN ADC1_Init 2 */
 
   /* USER CODE END ADC1_Init 2 */
+
 }
 
-void HAL_ADC_MspInit(ADC_HandleTypeDef *adcHandle)
+void HAL_ADC_MspInit(ADC_HandleTypeDef* adcHandle)
 {
 
   GPIO_InitTypeDef GPIO_InitStruct = {0};
-  if (adcHandle->Instance == ADC1)
+  if(adcHandle->Instance==ADC1)
   {
-    /* USER CODE BEGIN ADC1_MspInit 0 */
+  /* USER CODE BEGIN ADC1_MspInit 0 */
 
-    /* USER CODE END ADC1_MspInit 0 */
+  /* USER CODE END ADC1_MspInit 0 */
     /* ADC1 clock enable */
     __HAL_RCC_ADC1_CLK_ENABLE();
 
@@ -103,22 +105,22 @@ void HAL_ADC_MspInit(ADC_HandleTypeDef *adcHandle)
       Error_Handler();
     }
 
-    __HAL_LINKDMA(adcHandle, DMA_Handle, hdma_adc1);
+    __HAL_LINKDMA(adcHandle,DMA_Handle,hdma_adc1);
 
-    /* USER CODE BEGIN ADC1_MspInit 1 */
+  /* USER CODE BEGIN ADC1_MspInit 1 */
 
-    /* USER CODE END ADC1_MspInit 1 */
+  /* USER CODE END ADC1_MspInit 1 */
   }
 }
 
-void HAL_ADC_MspDeInit(ADC_HandleTypeDef *adcHandle)
+void HAL_ADC_MspDeInit(ADC_HandleTypeDef* adcHandle)
 {
 
-  if (adcHandle->Instance == ADC1)
+  if(adcHandle->Instance==ADC1)
   {
-    /* USER CODE BEGIN ADC1_MspDeInit 0 */
+  /* USER CODE BEGIN ADC1_MspDeInit 0 */
 
-    /* USER CODE END ADC1_MspDeInit 0 */
+  /* USER CODE END ADC1_MspDeInit 0 */
     /* Peripheral clock disable */
     __HAL_RCC_ADC1_CLK_DISABLE();
 
@@ -129,9 +131,9 @@ void HAL_ADC_MspDeInit(ADC_HandleTypeDef *adcHandle)
 
     /* ADC1 DMA DeInit */
     HAL_DMA_DeInit(adcHandle->DMA_Handle);
-    /* USER CODE BEGIN ADC1_MspDeInit 1 */
+  /* USER CODE BEGIN ADC1_MspDeInit 1 */
 
-    /* USER CODE END ADC1_MspDeInit 1 */
+  /* USER CODE END ADC1_MspDeInit 1 */
   }
 }
 
@@ -157,9 +159,9 @@ void Voltage_Check() // 20HZ
 {
   static u16 cnt0, cnt1;
   /**
-   * @brief 对偏差积分(一阶低通滤波)
-   *        电压值偏差 = 当前采样电压值 - 之前的电压值
-   *        电压值 = 0.8 * 电压值偏差 + 电压值 * 0.2
+   * @brief 对偏差积�?(�?阶低通滤�?)
+   *        电压值偏�? = 当前采样电压�? - 之前的电压�??
+   *        电压�? = 0.8 * 电压值偏�? + 电压�? * 0.2
    *       voltage 1= 0.2f * (2 * (3300 * ADC_ConvertedValue[0] / 4096) ) + voltage * 0.8f;
    */
   voltage += 0.2f * (2 * (3300 * ADC_ConvertedValue[0] / 4096) - voltage);
@@ -168,7 +170,7 @@ void Voltage_Check() // 20HZ
   {
     return;
   }
-  else // 不飞行的时候的低压判断
+  else // 不飞行的时�?�的低压判断
   {
     if (voltage < power0 && voltage > 3400) // 低压
     {
