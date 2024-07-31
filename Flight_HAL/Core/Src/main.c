@@ -20,10 +20,11 @@
 #include "main.h"
 #include "adc.h"
 #include "dma.h"
+#include "i2c.h"
 #include "tim.h"
 #include "usart.h"
 #include "gpio.h"
-#include "LED.h"
+
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 /* USER CODE END Includes */
@@ -92,6 +93,7 @@ int main(void)
   MX_TIM2_Init();
   MX_USART3_UART_Init();
   MX_ADC1_Init();
+  MX_I2C1_Init();
   /* USER CODE BEGIN 2 */
   // 启动pwm,当我们用寄存器初始化他不用开,而hal库却要开
   HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_1);
@@ -123,7 +125,7 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-    // LED_Toggle(GPIOB, GPIO_PIN_1);
+
     /* USER CODE BEGIN 3 */
     if (HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_1) == 0)
     {

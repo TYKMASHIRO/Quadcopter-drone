@@ -18,8 +18,6 @@
 #include "ALL_DEFINE.h" 
 #include "ALL_DATA.h" 
 #include "LED.h"
-#include "Uart1.h"
-#include "USART2.h"
 #include "ANO_Data_Transfer.h"
 #include "ADC.h"
 

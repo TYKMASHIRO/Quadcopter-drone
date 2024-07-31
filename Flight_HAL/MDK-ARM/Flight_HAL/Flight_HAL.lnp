@@ -4,6 +4,7 @@
 "flight_hal\gpio.o"
 "flight_hal\adc.o"
 "flight_hal\dma.o"
+"flight_hal\i2c.o"
 "flight_hal\tim.o"
 "flight_hal\usart.o"
 "flight_hal\stm32f1xx_it.o"
@@ -21,6 +22,7 @@
 "flight_hal\stm32f1xx_hal_flash.o"
 "flight_hal\stm32f1xx_hal_flash_ex.o"
 "flight_hal\stm32f1xx_hal_exti.o"
+"flight_hal\stm32f1xx_hal_i2c.o"
 "flight_hal\stm32f1xx_hal_tim.o"
 "flight_hal\stm32f1xx_hal_tim_ex.o"
 "flight_hal\stm32f1xx_hal_uart.o"
@@ -35,6 +37,7 @@
 "flight_hal\heap_4.o"
 "flight_hal\port.o"
 "flight_hal\led.o"
+"flight_hal\int_mpu6050.o"
 --library_type=microlib --strict --scatter "Flight_HAL\Flight_HAL.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
