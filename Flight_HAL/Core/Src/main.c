@@ -126,6 +126,7 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  HAL_Delay(1000);
   while (1)
   {
     /* USER CODE END WHILE */
@@ -141,13 +142,22 @@ int main(void)
     // }
 
     App_Flight_MPU_Data();
-    if (MPU6050.accX)
-    {
-      // __HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_3, 499); // 右后
-      // __HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_2, 499); // 右前
-      // __HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_1, 499); // 左前
-      // __HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_4, 499); // 左后
-    }
+    printf("============MPU 初始值 ==============\r\n");
+    printf("accX=%d\r\n", MPU6050.accX);
+    printf("accY=%d\r\n", MPU6050.accY);
+    printf("accZ=%d\r\n", MPU6050.accZ);
+    printf("gyroX=%d\r\n", MPU6050.gyroX);
+    printf("gyroY=%d\r\n", MPU6050.gyroY);
+    printf("gyroZ=%d\r\n", MPU6050.gyroZ);
+
+    // __HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_3, 499); // 右后
+    // if (MPU6050.accX)
+    // {
+    //   __HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_3, 499); // 右后
+    //   // __HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_2, 499); // 右前
+    //   // __HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_1, 499); // 左前
+    //   // __HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_4, 499); // 左后
+    // }
 
     /* USER CODE END 3 */
   }

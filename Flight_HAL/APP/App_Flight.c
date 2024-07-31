@@ -56,13 +56,13 @@ void App_Flight_MPU_Data(void)
     Int_MPU6050_GetAccl(&MPU6050.accX, &MPU6050.accY, &MPU6050.accZ);
     Int_MPU6050_GetGyro(&MPU6050.gyroX, &MPU6050.gyroY, &MPU6050.gyroZ);
 
-    // printf("============MPU 初始值 ==============\r\n");
-    // printf("accX=%d\r\n", MPU6050.accX);
-    // printf("accY=%d\r\n", MPU6050.accY);
-    // printf("accZ=%d\r\n", MPU6050.accZ);
-    // printf("gyroX=%d\r\n", MPU6050.gyroX);
-    // printf("gyroY=%d\r\n", MPU6050.gyroY);
-    // printf("gyroZ=%d\r\n", MPU6050.gyroZ);
+    printf("============MPU 初始值 ==============\r\n");
+    printf("accX=%d\r\n", MPU6050.accX);
+    printf("accY=%d\r\n", MPU6050.accY);
+    printf("accZ=%d\r\n", MPU6050.accZ);
+    printf("gyroX=%d\r\n", MPU6050.gyroX);
+    printf("gyroY=%d\r\n", MPU6050.gyroY);
+    printf("gyroZ=%d\r\n", MPU6050.gyroZ);
 
     /* 2: 零偏校准 */
     // MPU6050.accX = MPU6050.accX - MPU_Offset[0];

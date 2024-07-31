@@ -7,14 +7,14 @@
 
 #include "tim.h"
 
-/* ���弸���꣬�����������Ĳ�ͬ״̬ */
-#define ENMERGENCY_0 0 // ����׶��ж������Ƿ���ͣ�����ǣ���ɵڶ��׶�
-#define WAITING_1 1    // ����׶��ж������Ƿ���ͣ�����ǣ���ɵڶ��׶�
-#define WAITING_2 2    // ����׶��ж������Ƿ���ߣ�����ǣ���ɵ����׶�
-#define WAITING_3 3    // ����׶��ж������Ƿ���ͣ�����ǣ���ɵ��Ľ׶�
-#define WAITING_4 4    // ����׶α�ʾ�������ɹ��׶�
-#define PROCESS 5      // ����׶α�ʾ����ʽ���ƽ׶�
-#define EXIT 6         // ����׶α�ʾ����ʽ���ƽ׶�
+/* 定义几个宏，来代表解锁的不同状态 */
+#define ENMERGENCY_0 0 // 这个阶段判断油门是否最低，如果是，变成第二阶段
+#define WAITING_1 1    // 这个阶段判断油门是否最低，如果是，变成第二阶段
+#define WAITING_2 2    // 这个阶段判断油门是否最高，如果是，变成第三阶段
+#define WAITING_3 3    // 这个阶段判断油门是否最低，如果是，变成第四阶段
+#define WAITING_4 4    // 这个阶段表示，解锁成功阶段
+#define PROCESS 5      // 这个阶段表示，正式控制阶段
+#define EXIT 6         // 这个阶段表示，正式控制阶段
 
 #define LIMIT(x, min, max) (x < min) ? min : ((x > max) ? max : x)
 
@@ -30,18 +30,18 @@ typedef struct
 
 typedef struct
 {
-    float pitch; /* ŷ�����е� ������ */
-    float roll;  /* ŷ�����е� ����� */
-    float yaw;   /* ŷ�����е� ƫ���� */
+    float pitch; /* 欧拉角中的 俯仰角 */
+    float roll;  /* 欧拉角中的 横滚角 */
+    float yaw;   /* 欧拉角中的 偏航角 */
 } _stAngle;
 
 typedef struct
 {
-    int16_t THR; // ���ţ���ҡ������
-    int16_t YAW; // ƫ������ҡ������
-    int16_t ROL; // �������ҡ������
-    int16_t PIT; // ��������ҡ������
-    /* Ԥ����6������ͨ��������ʲô��;���Լ����壬���������ǲ��� */
+    int16_t THR; // 油门：左摇杆上下
+    int16_t YAW; // 偏航：左摇杆左右
+    int16_t ROL; // 横滚：右摇杆左右
+    int16_t PIT; // 俯仰：右摇杆上下
+    /* 预留了6个辅助通道：具体什么用途，自己定义，在这里我们不用 */
     int16_t AUX1;
     int16_t AUX2;
     int16_t AUX3;
@@ -50,7 +50,7 @@ typedef struct
     int16_t AUX6;
 } _stRemote;
 
-/* ��ͷ�ļ���extern�������������c�ж���ı��� */
+/* 在头文件中extern，方便别人引入c中定义的变量 */
 extern _stMPU MPU6050;
 extern _stAngle Angle;
 

@@ -40,11 +40,13 @@ compiling main.c...
   void App_Flight_Motor_Control();
 ../App/App_Flight.h(82): warning:  #1295-D: Deprecated declaration App_PID_Param_Init - give arg types
   void App_PID_Param_Init();
-../Core/Src/main.c: 6 warnings, 0 errors
+../Core/Src/main.c(145): warning:  #870-D: invalid multibyte character sequence
+      printf("============MPU 初始�? ==============\r\n");
+../Core/Src/main.c: 7 warnings, 0 errors
 linking...
-Program Size: Code=11600 RO-data=312 RW-data=80 ZI-data=2368  
+Program Size: Code=12812 RO-data=312 RW-data=84 ZI-data=2372  
 FromELF: creating hex file...
-"Flight_HAL\Flight_HAL.axf" - 0 Error(s), 6 Warning(s).
+"Flight_HAL\Flight_HAL.axf" - 0 Error(s), 7 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -67,7 +69,7 @@ Package Vendor: Keil
 <h2>Collection of Component Files used:</h2>
 
    * Component: ARM::CMSIS:CORE:5.0.1
-Build Time Elapsed:  00:00:02
+Build Time Elapsed:  00:00:01
 </pre>
 </body>
 </html>
