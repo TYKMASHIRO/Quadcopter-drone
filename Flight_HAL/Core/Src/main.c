@@ -27,6 +27,9 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include "LED.h"
+#include "Int_MPU6050.h"
+#include "App_Flight.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -48,6 +51,7 @@
 
 /* USER CODE BEGIN PV */
 uint32_t pData[1024];
+uint16_t ADC_Value[5];
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -127,9 +131,19 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-    if (HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_1) == 0)
+    // LED_Toggle(GPIOB, GPIO_PIN_1);
+    // if (HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_1) == 0)
+    // {
+    //   __HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_3, 499); // 右后
+    //   // __HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_2, 499); // 右前
+    //   // __HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_1, 499); // 左前
+    //   // __HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_4, 499); // 左后
+    // }
+
+    App_Flight_MPU_Data();
+    if (MPU6050.accX)
     {
-      __HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_3, 499); // 右后
+      // __HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_3, 499); // 右后
       // __HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_2, 499); // 右前
       // __HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_1, 499); // 左前
       // __HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_4, 499); // 左后

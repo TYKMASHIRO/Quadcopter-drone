@@ -36,6 +36,7 @@
 "flight_hal\timers.o"
 "flight_hal\heap_4.o"
 "flight_hal\port.o"
+"flight_hal\app_flight.o"
 "flight_hal\led.o"
 "flight_hal\int_mpu6050.o"
 --library_type=microlib --strict --scatter "Flight_HAL\Flight_HAL.sct"

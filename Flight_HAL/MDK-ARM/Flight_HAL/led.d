@@ -33,11 +33,3 @@ flight_hal\led.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h
 flight_hal\led.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h
 flight_hal\led.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h
 flight_hal\led.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h
-flight_hal\led.o: ../USER/sys.h
-flight_hal\led.o: ../USER/delay.h
-flight_hal\led.o: ../USER/ALL_DATA.h
-flight_hal\led.o: ../USER/ALL_DEFINE.h
-flight_hal\led.o: ../USER/INIT.h
-flight_hal\led.o: ../USER/sys.h
-flight_hal\led.o: ../Core/Inc/TIM.h
-flight_hal\led.o: ../HARDWARE/LED.h
