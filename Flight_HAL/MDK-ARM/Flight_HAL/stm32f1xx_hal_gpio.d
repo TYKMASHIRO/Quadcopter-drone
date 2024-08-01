@@ -27,6 +27,7 @@ flight_hal\stm32f1xx_hal_gpio.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_h
 flight_hal\stm32f1xx_hal_gpio.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h
 flight_hal\stm32f1xx_hal_gpio.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_i2c.h
 flight_hal\stm32f1xx_hal_gpio.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h
+flight_hal\stm32f1xx_hal_gpio.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h
 flight_hal\stm32f1xx_hal_gpio.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h
 flight_hal\stm32f1xx_hal_gpio.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h
 flight_hal\stm32f1xx_hal_gpio.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h

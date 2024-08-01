@@ -22,31 +22,25 @@ Dialog DLL:      TCM.DLL V1.32.0.0
  
 <h2>Project:</h2>
 c:\Users\19062\Desktop\Quadcopter drone\Flight_HAL\MDK-ARM\Flight_HAL.uvprojx
-Project File Date:  08/01/2024
+Project File Date:  08/02/2024
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 5 (build 528)', folder: 'D:\works\Keil5\ARM\ARMCC\Bin'
 Build target 'Flight_HAL'
-compiling App_Flight.c...
-../HARDWARE/Int_MPU6050.h(86): warning:  #1295-D: Deprecated declaration Int_MPU6050_Init - give arg types
-  void Int_MPU6050_Init();
-..\APP\App_Flight.h(66): warning:  #1295-D: Deprecated declaration App_Flight_MPU_Offsets - give arg types
-  void App_Flight_MPU_Offsets();
-..\APP\App_Flight.h(70): warning:  #1295-D: Deprecated declaration App_Flight_RC_Unlock - give arg types
-  void App_Flight_RC_Unlock();
-..\APP\App_Flight.h(72): warning:  #1295-D: Deprecated declaration App_Flight_RC_Analysis - give arg types
-  void App_Flight_RC_Analysis();
-..\APP\App_Flight.h(76): warning:  #1295-D: Deprecated declaration App_Flight_Motor_Control - give arg types
-  void App_Flight_Motor_Control();
-..\APP\App_Flight.h(80): warning:  #1295-D: Deprecated declaration App_PID_Param_Init - give arg types
-  void App_PID_Param_Init();
-..\APP\App_Flight.c(129): warning:  #223-D: function "printf" declared implicitly
-      printf("============MPU Initial Value ==============\r\n");
-..\APP\App_Flight.c: 7 warnings, 0 errors
+compiling NRF24L01.c...
+..\HARDWARE\NRF24L01.h(86): warning:  #1295-D: Deprecated declaration NRF24L01_Check - give arg types
+  uint8_t NRF24L01_Check();
+..\HARDWARE\NRF24L01.c(128): warning:  #940-D: missing return statement at end of non-void function "NRF24L01_TX_Mode" 
+  }
+..\HARDWARE\NRF24L01.c(151): warning:  #940-D: missing return statement at end of non-void function "NRF24L01_RX_Mode" 
+  }
+..\HARDWARE\NRF24L01.c(263): warning:  #1-D: last line of file ends without a newline
+  }
+..\HARDWARE\NRF24L01.c: 4 warnings, 0 errors
 linking...
-Program Size: Code=22416 RO-data=392 RW-data=240 ZI-data=2384  
+Program Size: Code=22880 RO-data=392 RW-data=240 ZI-data=2472  
 FromELF: creating hex file...
-"Flight_HAL\Flight_HAL.axf" - 0 Error(s), 7 Warning(s).
+"Flight_HAL\Flight_HAL.axf" - 0 Error(s), 4 Warning(s).
 
 <h2>Software Packages used:</h2>
 

@@ -139,7 +139,7 @@ void App_Flight_MPU_Offsets()
         /* 内层循环，每次要等待满足静止条件为止 */
         do
         {
-
+            App_Flight_MPU_Data();
             /* 计算偏差值 */
             Err_Gyro[0] = MPU6050.gyroX - LastGyro[0];
             Err_Gyro[1] = MPU6050.gyroY - LastGyro[1];

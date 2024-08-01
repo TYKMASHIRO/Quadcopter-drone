@@ -1,7 +1,7 @@
 /*
- * @Author: ?й?????????????
+ * @Author: mashiro
  * @FilePath: Int_MPU6050.c
- * Copyright (c) 2024 by atguigu, All Rights Reserved.
+ * Copyright, All Rights Reserved.
  */
 #include "Int_MPU6050.h"
 
@@ -14,7 +14,7 @@
 uint8_t Int_MPU6050_WriteByte(uint8_t reg_addr, uint8_t byte)
 {
 
-    HAL_I2C_Mem_Write(&hi2c1,MPU_IIC_ADDR << 1 ,reg_addr,I2C_MEMADD_SIZE_8BIT,&byte,1,HAL_MAX_DELAY);
+    HAL_I2C_Mem_Write(&hi2c1, MPU_IIC_ADDR << 1, reg_addr, I2C_MEMADD_SIZE_8BIT, &byte, 1, HAL_MAX_DELAY);
     return 0;
 }
 
@@ -26,7 +26,7 @@ uint8_t Int_MPU6050_WriteByte(uint8_t reg_addr, uint8_t byte)
  */
 uint8_t Int_MPU6050_ReadByte(uint8_t reg_addr, uint8_t *byte)
 {
-    HAL_I2C_Mem_Read(&hi2c1,MPU_IIC_ADDR << 1 ,reg_addr,I2C_MEMADD_SIZE_8BIT,byte,1,HAL_MAX_DELAY);
+    HAL_I2C_Mem_Read(&hi2c1, MPU_IIC_ADDR << 1, reg_addr, I2C_MEMADD_SIZE_8BIT, byte, 1, HAL_MAX_DELAY);
     return 0;
 }
 
@@ -40,7 +40,7 @@ uint8_t Int_MPU6050_ReadByte(uint8_t reg_addr, uint8_t *byte)
  */
 uint8_t Int_MPU6050_Write_Len(uint8_t reg_addr, uint8_t *data, uint8_t size)
 {
-    HAL_I2C_Mem_Write(&hi2c1,MPU_IIC_ADDR << 1 ,reg_addr,I2C_MEMADD_SIZE_8BIT,data,size,HAL_MAX_DELAY);
+    HAL_I2C_Mem_Write(&hi2c1, MPU_IIC_ADDR << 1, reg_addr, I2C_MEMADD_SIZE_8BIT, data, size, HAL_MAX_DELAY);
     return 0;
 }
 
@@ -53,7 +53,7 @@ uint8_t Int_MPU6050_Write_Len(uint8_t reg_addr, uint8_t *data, uint8_t size)
  */
 uint8_t Int_MPU6050_Read_Len(uint8_t reg_addr, uint8_t *data, uint8_t size)
 {
-    HAL_I2C_Mem_Read(&hi2c1,MPU_IIC_ADDR << 1 ,reg_addr,I2C_MEMADD_SIZE_8BIT,data,size,HAL_MAX_DELAY);
+    HAL_I2C_Mem_Read(&hi2c1, MPU_IIC_ADDR << 1, reg_addr, I2C_MEMADD_SIZE_8BIT, data, size, HAL_MAX_DELAY);
     return 0;
 }
 
@@ -147,7 +147,6 @@ void Int_MPU6050_Init()
 {
     uint8_t res = 0;
     /* 1、 初始化I2C2 */
-    
 
     /* 2、 复位 */
     Int_MPU6050_WriteByte(MPU_PWR_MGMT1_REG, 0X80);
@@ -162,7 +161,7 @@ void Int_MPU6050_Init()
     /* 7、禁用中断、FIFO、I2C AUX模式 */
     // Int_MPU6050_WriteByte(MPU_INT_EN_REG, 0X01);    // 开启数据准备中断
     // Int_MPU6050_WriteByte(MPU_INTBP_CFG_REG, 0X80); // INT引脚低电平有效
-    Int_MPU6050_WriteByte(MPU_INT_EN_REG, 0X00);    // 关闭中断
+    Int_MPU6050_WriteByte(MPU_INT_EN_REG, 0X00); // 关闭中断
     Int_MPU6050_WriteByte(MPU_FIFO_EN_REG, 0X00);
     Int_MPU6050_WriteByte(MPU_USER_CTRL_REG, 0X00);
     /* 判断是否可用，如果可以读到器件ID，说明前面的初始化没有错误 */

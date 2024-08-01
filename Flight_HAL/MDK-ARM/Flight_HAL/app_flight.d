@@ -29,6 +29,7 @@ flight_hal\app_flight.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash
 flight_hal\app_flight.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h
 flight_hal\app_flight.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_i2c.h
 flight_hal\app_flight.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h
+flight_hal\app_flight.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h
 flight_hal\app_flight.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h
 flight_hal\app_flight.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h
 flight_hal\app_flight.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h
@@ -36,6 +37,6 @@ flight_hal\app_flight.o: ../HARDWARE/LED.h
 flight_hal\app_flight.o: ../Core/Inc/GPIO.H
 flight_hal\app_flight.o: ../HARDWARE/Int_MPU6050.h
 flight_hal\app_flight.o: ../Core/Inc/i2c.h
-flight_hal\app_flight.o: ..\Com\Com_Kalman.h
-flight_hal\app_flight.o: ..\Com\Com_PID.h
+flight_hal\app_flight.o: ../Com/Com_Kalman.h
+flight_hal\app_flight.o: ../Com/Com_PID.h
 flight_hal\app_flight.o: ../Core/Inc/tim.h
