@@ -12,19 +12,17 @@
                 "c:\\Users\\19062\\Desktop\\Quadcopter drone\\Flight_HAL\\Mid\\FreeRTOS\\include",
                 "c:\\Users\\19062\\Desktop\\Quadcopter drone\\Flight_HAL\\Mid\\FreeRTOS\\portable\\RVDS\\ARM_CM3",
                 "c:\\Users\\19062\\Desktop\\Quadcopter drone\\Flight_HAL\\Int",
-                "c:\\Users\\19062\\Desktop\\Quadcopter drone\\Flight_HAL\\App",
+                "c:\\Users\\19062\\Desktop\\Quadcopter drone\\Flight_HAL\\APP",
                 "c:\\Users\\19062\\Desktop\\Quadcopter drone\\Flight_HAL\\Com",
                 "c:\\Users\\19062\\Desktop\\Quadcopter drone\\Flight_HAL\\Lib\\inc",
                 "c:\\Users\\19062\\Desktop\\Quadcopter drone\\Flight_HAL\\HARDWARE",
-                "c:\\Users\\19062\\Desktop\\Quadcopter drone\\Flight_HAL\\MATH",
                 "D:\\works\\Keil5\\ARM\\ARMCC\\include",
                 "D:\\works\\Keil5\\ARM\\ARMCC\\include\\rw",
                 "c:\\Users\\19062\\Desktop\\Quadcopter drone\\Flight_HAL\\MDK-ARM",
                 "c:\\Users\\19062\\Desktop\\Quadcopter drone\\Flight_HAL\\Core\\Src",
                 "c:\\Users\\19062\\Desktop\\Quadcopter drone\\Flight_HAL\\Drivers\\STM32F1xx_HAL_Driver\\Src",
                 "c:\\Users\\19062\\Desktop\\Quadcopter drone\\Flight_HAL\\Mid\\FreeRTOS\\source",
-                "c:\\Users\\19062\\Desktop\\Quadcopter drone\\Flight_HAL\\Mid\\FreeRTOS\\portable",
-                "c:\\Users\\19062\\Desktop\\Quadcopter drone\\Flight_HAL\\APP"
+                "c:\\Users\\19062\\Desktop\\Quadcopter drone\\Flight_HAL\\Mid\\FreeRTOS\\portable"
             ],
             "defines": [
                 "USE_HAL_DRIVER",

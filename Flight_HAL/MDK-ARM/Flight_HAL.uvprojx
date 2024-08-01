@@ -336,7 +336,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32F103xB</Define>
               <Undefine></Undefine>
-              <IncludePath>../Core/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32F1xx/Include;../Drivers/CMSIS/Include;../Mid/FreeRTOS;../Mid/FreeRTOS/include;../Mid/FreeRTOS/portable/RVDS/ARM_CM3;../Int;../App;../Com;../Lib/inc;../HARDWARE;../MATH</IncludePath>
+              <IncludePath>../Core/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc;../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32F1xx/Include;../Drivers/CMSIS/Include;../Mid/FreeRTOS;../Mid/FreeRTOS/include;../Mid/FreeRTOS/portable/RVDS/ARM_CM3;../Int;..\APP;..\Com;../Lib/inc;../HARDWARE</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -967,6 +967,23 @@
         </Group>
         <Group>
           <GroupName>Com</GroupName>
+          <Files>
+            <File>
+              <FileName>Com_IMU.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Com\Com_IMU.c</FilePath>
+            </File>
+            <File>
+              <FileName>Com_Kalman.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Com\Com_Kalman.c</FilePath>
+            </File>
+            <File>
+              <FileName>Com_PID.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Com\Com_PID.c</FilePath>
+            </File>
+          </Files>
         </Group>
         <Group>
           <GroupName>HARDWARE</GroupName>

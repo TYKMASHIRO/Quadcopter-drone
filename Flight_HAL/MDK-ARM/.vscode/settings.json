@@ -12,6 +12,9 @@
         "stm32f1xx_hal.h": "c",
         "delay.h": "c",
         "int_mpu6050.h": "c",
-        "app_flight.h": "c"
+        "app_flight.h": "c",
+        "com_kalman.h": "c",
+        "com_imu.h": "c",
+        "main.h": "c"
     }
 }

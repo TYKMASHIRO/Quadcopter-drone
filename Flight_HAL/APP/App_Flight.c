@@ -1,18 +1,5 @@
 #include "App_Flight.h"
-#include "Int_MPU6050.h"
-#include "adc.h"
 
-typedef volatile struct
-{
-    float desired;   // ÆÚÍûÖµ
-    float prevError; // ÉÏ´ÎÆ«²î
-    float integ;     // Îó²î»ı·ÖÀÛ¼ÓÖµ
-    float kp;        // p²ÎÊı
-    float ki;        // i²ÎÊı
-    float kd;        // d²ÎÊı
-    float measured;  // Êµ¼Ê²âÁ¿Öµ
-    float out;       // pidÊä³ö
-} PidObject;
 PidObject pidPitch;
 PidObject pidRoll;
 PidObject pidYaw;
@@ -22,41 +9,54 @@ PidObject pidRateZ;
 
 PidObject *pids[] = {&pidPitch, &pidRoll, &pidYaw, &pidRateX, &pidRateY, &pidRateZ};
 
+extern const float Gyro_G;
+
+/* 4ä¸ªç”µæœºçš„pwm */
+int16_t motor1 = 0; // å³å
+int16_t motor2 = 0; // å³å‰
+int16_t motor3 = 0; // å·¦å‰
+int16_t motor4 = 0; // å·¦å
+
 _stMPU MPU6050;
 _stAngle Angle;
 int16_t MPU_Offset[6] = {0};
-float bat_val = 4000; // ³õÊ¼ÖµÎª4000mv
+float bat_val = 4000; // åˆå§‹å€¼ä¸º4000mv
+
 extern uint16_t ADC_Value[5];
 
 sLED LED = {1000, AlwaysOff};
 uint16_t led_count = 0;
 
-/* ½ÓÊÕÒ£¿ØÊı¾İµÄ½á¹¹Ìå */
+/* æ¥æ”¶é¥æ§æ•°æ®çš„ç»“æ„ä½“ */
 _stRemote remote;
 
-/* ½âËø±êÖ¾Î»:0±íÊ¾Ëø¶¨£¬1±íÊ¾½âËø */
+/* è§£é”æ ‡å¿—ä½:0è¡¨ç¤ºé”å®šï¼Œ1è¡¨ç¤ºè§£é” */
 uint8_t unlock_flag = 0;
 
 void App_Flight_VolCheck(void)
 {
-    /* ¶ÔÆ«²î»ı·Ö
-        µçÑ¹ÖµÆ«²î= µ±Ç°²ÉÑùµçÑ¹Öµ - Ö®Ç°µÄµçÑ¹Öµ
-        µçÑ¹Öµ = 0.2 * (Æ«²îÖµ - Ö®Ç°µçÑ¹Öµ)
-        ==¡·²ğ¿ª¹«Ê½ºó ==¡· µçÑ¹Öµ = 0.2 * µ±Ç°Öµ + 0.8 * Ö®Ç°µçÑ¹Öµ
-        bat_val += 0.2 * ((ADC_Value[0] * 3300 / 4095 * 2) - bat_val);
-        »ò Àí½âÎªÒ»½×µÍÍ¨ÂË²¨
-        µçÑ¹Öµ = 0.2 * µ±Ç°µçÑ¹²ÉÑùÖµ + 0.8 * Ö®Ç°µÄµçÑ¹Öµ
-     */
+    /* å¯¹åå·®ç§¯åˆ†
+       ç”µå‹å€¼åå·®= å½“å‰é‡‡æ ·ç”µå‹å€¼ - ä¹‹å‰çš„ç”µå‹å€¼
+       ç”µå‹å€¼ = 0.2 * (åå·®å€¼ - ä¹‹å‰ç”µå‹å€¼)
+       ==ã€‹æ‹†å¼€å…¬å¼å ==ã€‹ ç”µå‹å€¼ = 0.2 * å½“å‰å€¼ + 0.8 * ä¹‹å‰ç”µå‹å€¼
+       bat_val += 0.2 * ((ADC_Value[0] * 3300 / 4095 * 2) - bat_val);
+       æˆ– ç†è§£ä¸ºä¸€é˜¶ä½é€šæ»¤æ³¢
+       ç”µå‹å€¼ = 0.2 * å½“å‰ç”µå‹é‡‡æ ·å€¼ + 0.8 * ä¹‹å‰çš„ç”µå‹å€¼
+    */
     bat_val = 0.2 * ((ADC_Value[0] * 3300 / 4095 * 2)) + 0.8 * bat_val;
 }
 
+/**
+ * @description: è·å–MPUå…­è½´åŸå§‹æ•°æ®ï¼Œè¿›è¡Œé›¶åæ ¡å‡†æ»¤æ³¢
+ * @return {*}
+ */
 void App_Flight_MPU_Data(void)
 {
-    /* 1¡¢»ñÈ¡Ô­Ê¼Êı¾İ */
+    /* 1ã€è·å–åŸå§‹æ•°æ® */
     Int_MPU6050_GetAccl(&MPU6050.accX, &MPU6050.accY, &MPU6050.accZ);
     Int_MPU6050_GetGyro(&MPU6050.gyroX, &MPU6050.gyroY, &MPU6050.gyroZ);
 
-    printf("============MPU ³õÊ¼Öµ ==============\r\n");
+    printf("============MPU inital ==============\r\n");
     printf("accX=%d\r\n", MPU6050.accX);
     printf("accY=%d\r\n", MPU6050.accY);
     printf("accZ=%d\r\n", MPU6050.accZ);
@@ -64,15 +64,15 @@ void App_Flight_MPU_Data(void)
     printf("gyroY=%d\r\n", MPU6050.gyroY);
     printf("gyroZ=%d\r\n", MPU6050.gyroZ);
 
-    /* 2: ÁãÆ«Ğ£×¼ */
-    // MPU6050.accX = MPU6050.accX - MPU_Offset[0];
-    // MPU6050.accY = MPU6050.accY - MPU_Offset[1];
-    // MPU6050.accZ = MPU6050.accZ - MPU_Offset[2];
-    // MPU6050.gyroX = MPU6050.gyroX - MPU_Offset[3];
-    // MPU6050.gyroY = MPU6050.gyroY - MPU_Offset[4];
-    // MPU6050.gyroZ = MPU6050.gyroZ - MPU_Offset[5];
+    /* 2: é›¶åæ ¡å‡† */
+    MPU6050.accX = MPU6050.accX - MPU_Offset[0];
+    MPU6050.accY = MPU6050.accY - MPU_Offset[1];
+    MPU6050.accZ = MPU6050.accZ - MPU_Offset[2];
+    MPU6050.gyroX = MPU6050.gyroX - MPU_Offset[3];
+    MPU6050.gyroY = MPU6050.gyroY - MPU_Offset[4];
+    MPU6050.gyroZ = MPU6050.gyroZ - MPU_Offset[5];
 
-    // printf("============MPU ÂË²¨ºóµÄÖµ ==============\r\n");
+    // printf("============MPU å©Šã‚†å°éšåº£æ®‘éŠ? ==============\r\n");
     // printf("accX=%d\r\n", MPU6050.accX);
     // printf("accY=%d\r\n", MPU6050.accY);
     // printf("accZ=%d\r\n", MPU6050.accZ);
@@ -80,34 +80,34 @@ void App_Flight_MPU_Data(void)
     // printf("gyroY=%d\r\n", MPU6050.gyroY);
     // printf("gyroZ=%d\r\n", MPU6050.gyroZ);
 
-    /* 3¡¢ ¶Ô¼ÓËÙ¶È½øĞĞ¼òÒ×Ò»Î¬¿¨¶ûÂüÂË²¨ */
-    /* 3.1 XÖá¼ÓËÙ¶ÈÂË²¨ */
-    // Com_Kalman_1(&ekf[0], MPU6050.accX); // ¶ÔXÖá¼ÓËÙ¶È£¬½øĞĞ¼òÒ×Ò»Î¬¿¨¶ûÂüÂË²¨
-    // MPU6050.accX = (int16_t)ekf[0].out;  // ½«ÂË²¨ºóµÄ½á¹û£¬¸³Öµ¸øaccX
-    // /* 3.2 YÖá¼ÓËÙ¶ÈÂË²¨ */
-    // Com_Kalman_1(&ekf[1], MPU6050.accY); // ¶ÔYÖá¼ÓËÙ¶È£¬½øĞĞ¼òÒ×Ò»Î¬¿¨¶ûÂüÂË²¨
-    // MPU6050.accY = (int16_t)ekf[1].out;  // ½«ÂË²¨ºóµÄ½á¹û£¬¸³Öµ¸øaccY
-    // /* 3.3 ZÖá¼ÓËÙ¶ÈÂË²¨ */
-    // Com_Kalman_1(&ekf[2], MPU6050.accZ); // ¶ÔZÖá¼ÓËÙ¶È£¬½øĞĞ¼òÒ×Ò»Î¬¿¨¶ûÂüÂË²¨
-    // MPU6050.accZ = (int16_t)ekf[2].out;  // ½«ÂË²¨ºóµÄ½á¹û£¬¸³Öµ¸øaccZ
+    /* 3ã€ å¯¹åŠ é€Ÿåº¦è¿›è¡Œç®€æ˜“ä¸€ç»´å¡å°”æ›¼æ»¤æ³¢ */
+    /* 3.1 Xè½´åŠ é€Ÿåº¦æ»¤æ³¢ */
+    Com_Kalman_1(&ekf[0], MPU6050.accX); // å¯¹Xè½´åŠ é€Ÿåº¦ï¼Œè¿›è¡Œç®€æ˜“ä¸€ç»´å¡å°”æ›¼æ»¤æ³¢
+    MPU6050.accX = (int16_t)ekf[0].out;  // å°†æ»¤æ³¢åçš„ç»“æœï¼Œèµ‹å€¼ç»™accX
+    /* 3.2 Yè½´åŠ é€Ÿåº¦æ»¤æ³¢ */
+    Com_Kalman_1(&ekf[1], MPU6050.accY); // å¯¹Yè½´åŠ é€Ÿåº¦ï¼Œè¿›è¡Œç®€æ˜“ä¸€ç»´å¡å°”æ›¼æ»¤æ³¢
+    MPU6050.accY = (int16_t)ekf[1].out;  // å°†æ»¤æ³¢åçš„ç»“æœï¼Œèµ‹å€¼ç»™accY
+    /* 3.3 Zè½´åŠ é€Ÿåº¦æ»¤æ³¢ */
+    Com_Kalman_1(&ekf[2], MPU6050.accZ); // å¯¹Zè½´åŠ é€Ÿåº¦ï¼Œè¿›è¡Œç®€æ˜“ä¸€ç»´å¡å°”æ›¼æ»¤æ³¢
+    MPU6050.accZ = (int16_t)ekf[2].out;  // å°†æ»¤æ³¢åçš„ç»“æœï¼Œèµ‹å€¼ç»™accZ
 
-    // /* 4¡¢ ¶Ô½ÇËÙ¶È½øĞĞ¼òµ¥µÄÒ»½×µÍÍ¨ÂË²¨ */
-    // static int16_t lastGyro[3] = {0};
-    // /* 4.1 XÖá½ÇËÙ¶ÈµÍÍ¨ÂË²¨ */
-    // MPU6050.gyroX = 0.85 * lastGyro[0] + 0.15 * MPU6050.gyroX; // 0.85 * Ö®Ç°µÄÖµ + 0.15 * Õâ´ÎµÄÖµ
-    // lastGyro[0] = MPU6050.gyroX;
-    // /* 4.2 YÖá½ÇËÙ¶ÈµÍÍ¨ÂË²¨ */                                // ¸üĞÂ±£´æµÄ½ÇËÙ¶ÈÖµ£¬ÏÂ´ÎÓÃ
-    // MPU6050.gyroY = 0.85 * lastGyro[1] + 0.15 * MPU6050.gyroY; // 0.85 * Ö®Ç°µÄÖµ + 0.15 * Õâ´ÎµÄÖµ
-    // lastGyro[1] = MPU6050.gyroY;                               // ¸üĞÂ±£´æµÄ½ÇËÙ¶ÈÖµ£¬ÏÂ´ÎÓÃ
-    // /* 4.3 ZÖá½ÇËÙ¶ÈµÍÍ¨ÂË²¨ */
-    // MPU6050.gyroZ = 0.85 * lastGyro[2] + 0.15 * MPU6050.gyroZ; // 0.85 * Ö®Ç°µÄÖµ + 0.15 * Õâ´ÎµÄÖµ
-    // lastGyro[2] = MPU6050.gyroZ;                               // ¸üĞÂ±£´æµÄ½ÇËÙ¶ÈÖµ£¬ÏÂ´ÎÓÃ
+    /* 4ã€ å¯¹è§’é€Ÿåº¦è¿›è¡Œç®€å•çš„ä¸€é˜¶ä½é€šæ»¤æ³¢ */
+    static int16_t lastGyro[3] = {0};
+    /* 4.1 Xè½´è§’é€Ÿåº¦ä½é€šæ»¤æ³¢ */
+    MPU6050.gyroX = 0.85 * lastGyro[0] + 0.15 * MPU6050.gyroX; // 0.85 * ä¹‹å‰çš„å€¼ + 0.15 * è¿™æ¬¡çš„å€¼
+    lastGyro[0] = MPU6050.gyroX;
+    /* 4.2 Yè½´è§’é€Ÿåº¦ä½é€šæ»¤æ³¢ */                                // æ›´æ–°ä¿å­˜çš„è§’é€Ÿåº¦å€¼ï¼Œä¸‹æ¬¡ç”¨
+    MPU6050.gyroY = 0.85 * lastGyro[1] + 0.15 * MPU6050.gyroY; // 0.85 * ä¹‹å‰çš„å€¼ + 0.15 * è¿™æ¬¡çš„å€¼
+    lastGyro[1] = MPU6050.gyroY;                               // æ›´æ–°ä¿å­˜çš„è§’é€Ÿåº¦å€¼ï¼Œä¸‹æ¬¡ç”¨
+    /* 4.3 Zè½´è§’é€Ÿåº¦ä½é€šæ»¤æ³¢ */
+    MPU6050.gyroZ = 0.85 * lastGyro[2] + 0.15 * MPU6050.gyroZ; // 0.85 * ä¹‹å‰çš„å€¼ + 0.15 * è¿™æ¬¡çš„å€¼
+    lastGyro[2] = MPU6050.gyroZ;                               // æ›´æ–°ä¿å­˜çš„è§’é€Ÿåº¦å€¼ï¼Œä¸‹æ¬¡ç”¨
 
-    // printf("============MPU ÂË²¨ºóµÄÖµ ==============\r\n");
-    // printf("accX=%d\r\n", MPU6050.accX);
-    // printf("accY=%d\r\n", MPU6050.accY);
-    // printf("accZ=%d\r\n", MPU6050.accZ);
-    // printf("gyroX=%d\r\n", MPU6050.gyroX);
-    // printf("gyroY=%d\r\n", MPU6050.gyroY);
-    // printf("gyroZ=%d\r\n", MPU6050.gyroZ);
+    printf("============MPU æ»¤æ³¢åçš„å€¼ ==============\r\n");
+    printf("accX=%d\r\n", MPU6050.accX);
+    printf("accY=%d\r\n", MPU6050.accY);
+    printf("accZ=%d\r\n", MPU6050.accZ);
+    printf("gyroX=%d\r\n", MPU6050.gyroX);
+    printf("gyroY=%d\r\n", MPU6050.gyroY);
+    printf("gyroZ=%d\r\n", MPU6050.gyroZ);
 }

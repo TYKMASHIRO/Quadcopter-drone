@@ -30,6 +30,7 @@
 #include "LED.h"
 #include "Int_MPU6050.h"
 #include "App_Flight.h"
+#include "Com_IMU.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -99,6 +100,8 @@ int main(void)
   MX_ADC1_Init();
   MX_I2C1_Init();
   /* USER CODE BEGIN 2 */
+  Int_MPU6050_Init(); /*mpu6050初始化*/
+
   // 启动pwm,当我们用寄存器初始化他不用开,而hal库却要开
   HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_1);
   HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_2);
@@ -126,7 +129,6 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  HAL_Delay(1000);
   while (1)
   {
     /* USER CODE END WHILE */
@@ -142,13 +144,6 @@ int main(void)
     // }
 
     App_Flight_MPU_Data();
-    printf("============MPU 初始值 ==============\r\n");
-    printf("accX=%d\r\n", MPU6050.accX);
-    printf("accY=%d\r\n", MPU6050.accY);
-    printf("accZ=%d\r\n", MPU6050.accZ);
-    printf("gyroX=%d\r\n", MPU6050.gyroX);
-    printf("gyroY=%d\r\n", MPU6050.gyroY);
-    printf("gyroZ=%d\r\n", MPU6050.gyroZ);
 
     // __HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_3, 499); // 右后
     // if (MPU6050.accX)

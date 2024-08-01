@@ -22,31 +22,33 @@ Dialog DLL:      TCM.DLL V1.32.0.0
  
 <h2>Project:</h2>
 c:\Users\19062\Desktop\Quadcopter drone\Flight_HAL\MDK-ARM\Flight_HAL.uvprojx
-Project File Date:  07/31/2024
+Project File Date:  08/01/2024
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 5 (build 528)', folder: 'D:\works\Keil5\ARM\ARMCC\Bin'
 Build target 'Flight_HAL'
-compiling main.c...
+compiling App_Flight.c...
 ../HARDWARE/Int_MPU6050.h(86): warning:  #1295-D: Deprecated declaration Int_MPU6050_Init - give arg types
   void Int_MPU6050_Init();
-../App/App_Flight.h(68): warning:  #1295-D: Deprecated declaration App_Flight_MPU_Offsets - give arg types
+..\APP\App_Flight.h(66): warning:  #1295-D: Deprecated declaration App_Flight_MPU_Offsets - give arg types
   void App_Flight_MPU_Offsets();
-../App/App_Flight.h(72): warning:  #1295-D: Deprecated declaration App_Flight_RC_Unlock - give arg types
+..\APP\App_Flight.h(70): warning:  #1295-D: Deprecated declaration App_Flight_RC_Unlock - give arg types
   void App_Flight_RC_Unlock();
-../App/App_Flight.h(74): warning:  #1295-D: Deprecated declaration App_Flight_RC_Analysis - give arg types
+..\APP\App_Flight.h(72): warning:  #1295-D: Deprecated declaration App_Flight_RC_Analysis - give arg types
   void App_Flight_RC_Analysis();
-../App/App_Flight.h(78): warning:  #1295-D: Deprecated declaration App_Flight_Motor_Control - give arg types
+..\APP\App_Flight.h(76): warning:  #1295-D: Deprecated declaration App_Flight_Motor_Control - give arg types
   void App_Flight_Motor_Control();
-../App/App_Flight.h(82): warning:  #1295-D: Deprecated declaration App_PID_Param_Init - give arg types
+..\APP\App_Flight.h(80): warning:  #1295-D: Deprecated declaration App_PID_Param_Init - give arg types
   void App_PID_Param_Init();
-../Core/Src/main.c(145): warning:  #870-D: invalid multibyte character sequence
-      printf("============MPU 初始�? ==============\r\n");
-../Core/Src/main.c: 7 warnings, 0 errors
+..\APP\App_Flight.c(59): warning:  #223-D: function "printf" declared implicitly
+      printf("============MPU inital ==============\r\n");
+..\APP\App_Flight.c(106): warning:  #870-D: invalid multibyte character sequence
+      printf("============MPU 滤波后的�? ==============\r\n");
+..\APP\App_Flight.c: 8 warnings, 0 errors
 linking...
-Program Size: Code=12812 RO-data=312 RW-data=84 ZI-data=2372  
+Program Size: Code=15864 RO-data=312 RW-data=208 ZI-data=2368  
 FromELF: creating hex file...
-"Flight_HAL\Flight_HAL.axf" - 0 Error(s), 7 Warning(s).
+"Flight_HAL\Flight_HAL.axf" - 0 Error(s), 8 Warning(s).
 
 <h2>Software Packages used:</h2>
 

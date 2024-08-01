@@ -4,7 +4,8 @@
 #include "main.h"
 #include "LED.h"
 #include "Int_MPU6050.h"
-
+#include "Com_Kalman.h"
+#include "Com_PID.h"
 #include "tim.h"
 
 /* 定义几个宏，来代表解锁的不同状态 */
@@ -57,9 +58,6 @@ extern _stAngle Angle;
 extern sLED LED;
 
 extern _stRemote remote;
-
-
-
 
 void App_Flight_VolCheck(void);
 
