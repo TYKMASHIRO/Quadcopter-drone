@@ -46,3 +46,4 @@ flight_hal\main.o: ../HARDWARE/LED.h
 flight_hal\main.o: ../Com/Com_Kalman.h
 flight_hal\main.o: ../Com/Com_PID.h
 flight_hal\main.o: ../Com/Com_IMU.h
+flight_hal\main.o: ../HARDWARE/NRF24L01.h

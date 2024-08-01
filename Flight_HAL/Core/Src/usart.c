@@ -23,7 +23,7 @@
 /* USER CODE BEGIN 0 */
 int fputc(int ch, FILE *f)
 {
-  /* ·¢ËÍÒ»¸ö×Ö½ÚÊý¾Ýµ½´®¿ÚDEBUG_USART */
+  /* ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ö½ï¿½ï¿½ï¿½ï¿½Ýµï¿½ï¿½ï¿½ï¿½ï¿½DEBUG_USART */
   HAL_UART_Transmit(&huart3, (uint8_t *)&ch, 1, 1000);
 
   return (ch);
