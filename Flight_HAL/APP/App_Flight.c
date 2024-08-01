@@ -56,21 +56,21 @@ void App_Flight_MPU_Data(void)
     Int_MPU6050_GetAccl(&MPU6050.accX, &MPU6050.accY, &MPU6050.accZ);
     Int_MPU6050_GetGyro(&MPU6050.gyroX, &MPU6050.gyroY, &MPU6050.gyroZ);
 
-    printf("============MPU inital ==============\r\n");
-    printf("accX=%d\r\n", MPU6050.accX);
-    printf("accY=%d\r\n", MPU6050.accY);
-    printf("accZ=%d\r\n", MPU6050.accZ);
-    printf("gyroX=%d\r\n", MPU6050.gyroX);
-    printf("gyroY=%d\r\n", MPU6050.gyroY);
-    printf("gyroZ=%d\r\n", MPU6050.gyroZ);
+    // printf("============MPU Initial Value ==============\r\n");
+    // printf("accX=%d\r\n", MPU6050.accX);
+    // printf("accY=%d\r\n", MPU6050.accY);
+    // printf("accZ=%d\r\n", MPU6050.accZ);
+    // printf("gyroX=%d\r\n", MPU6050.gyroX);
+    // printf("gyroY=%d\r\n", MPU6050.gyroY);
+    // printf("gyroZ=%d\r\n", MPU6050.gyroZ);
 
-    /* 2: 零偏校准 */
-    MPU6050.accX = MPU6050.accX - MPU_Offset[0];
-    MPU6050.accY = MPU6050.accY - MPU_Offset[1];
-    MPU6050.accZ = MPU6050.accZ - MPU_Offset[2];
-    MPU6050.gyroX = MPU6050.gyroX - MPU_Offset[3];
-    MPU6050.gyroY = MPU6050.gyroY - MPU_Offset[4];
-    MPU6050.gyroZ = MPU6050.gyroZ - MPU_Offset[5];
+    // /* 2: 零偏校准 */
+    // MPU6050.accX = MPU6050.accX - MPU_Offset[0];
+    // MPU6050.accY = MPU6050.accY - MPU_Offset[1];
+    // MPU6050.accZ = MPU6050.accZ - MPU_Offset[2];
+    // MPU6050.gyroX = MPU6050.gyroX - MPU_Offset[3];
+    // MPU6050.gyroY = MPU6050.gyroY - MPU_Offset[4];
+    // MPU6050.gyroZ = MPU6050.gyroZ - MPU_Offset[5];
 
     // printf("============MPU 婊ゆ尝鍚庣殑鍊? ==============\r\n");
     // printf("accX=%d\r\n", MPU6050.accX);
@@ -103,7 +103,83 @@ void App_Flight_MPU_Data(void)
     MPU6050.gyroZ = 0.85 * lastGyro[2] + 0.15 * MPU6050.gyroZ; // 0.85 * 之前的值 + 0.15 * 这次的值
     lastGyro[2] = MPU6050.gyroZ;                               // 更新保存的角速度值，下次用
 
-    printf("============MPU 滤波后的值 ==============\r\n");
+    // printf("============MPU The filtered value ==============\r\n");
+    // printf("accX=%d\r\n", MPU6050.accX);
+    // printf("accY=%d\r\n", MPU6050.accY);
+    // printf("accZ=%d\r\n", MPU6050.accZ);
+    // printf("gyroX=%d\r\n", MPU6050.gyroX);
+    // printf("gyroY=%d\r\n", MPU6050.gyroY);
+    // printf("gyroZ=%d\r\n", MPU6050.gyroZ);
+}
+
+void App_Flight_MPU_Offsets()
+{
+    /* 1、 */
+    uint8_t gyro_i = 30;
+    int32_t buff[6] = {0};
+
+    /* 判断传感器是否处于静止状态：取 陀螺仪角速度 两次的差值，在一定范围内，认为是静止的 */
+    const int8_t MAX_GYRO_QUIET = 5;
+    const int8_t MIN_GYRO_QUIET = -5;
+    int16_t LastGyro[3] = {0}; // 保存上一次陀螺仪三个轴的数据
+    int16_t Err_Gyro[3] = {0}; // 保存每一次计算出来的三轴陀螺仪偏差值
+    HAL_Delay(10);
+    /* 更新MPU的值 */
+    App_Flight_MPU_Data();
+    printf("============MPU Initial Value ==============\r\n");
+    printf("accX=%d\r\n", MPU6050.accX);
+    printf("accY=%d\r\n", MPU6050.accY);
+    printf("accZ=%d\r\n", MPU6050.accZ);
+    printf("gyroX=%d\r\n", MPU6050.gyroX);
+    printf("gyroY=%d\r\n", MPU6050.gyroY);
+    printf("gyroZ=%d\r\n", MPU6050.gyroZ);
+    /* 连续判断30次满足静止条件，才往后执行 */
+    while (gyro_i--)
+    {
+        /* 内层循环，每次要等待满足静止条件为止 */
+        do
+        {
+
+            /* 计算偏差值 */
+            Err_Gyro[0] = MPU6050.gyroX - LastGyro[0];
+            Err_Gyro[1] = MPU6050.gyroY - LastGyro[1];
+            Err_Gyro[2] = MPU6050.gyroZ - LastGyro[2];
+            /* 保存当前值，下次用 */
+            LastGyro[0] = MPU6050.gyroX;
+            LastGyro[1] = MPU6050.gyroY;
+            LastGyro[2] = MPU6050.gyroZ;
+        } while (
+            /* 每个轴的2次角速度差值，必须在偏差范围内，才认为满足条件===》跳出内层循环 */
+            (Err_Gyro[0] < MIN_GYRO_QUIET || Err_Gyro[0] > MAX_GYRO_QUIET || Err_Gyro[1] < MIN_GYRO_QUIET || Err_Gyro[1]) > (MAX_GYRO_QUIET || Err_Gyro[2] < MIN_GYRO_QUIET || Err_Gyro[2] > MAX_GYRO_QUIET)
+
+        );
+    }
+
+    /* 取多次原始值，取平均值 : 去头100次，100+256（2的8次方）=356 */
+    for (uint16_t i = 0; i < 356; i++)
+    {
+        /* 更新MPU的值 */
+        HAL_Delay(10);
+        App_Flight_MPU_Data();
+        if (i >= 100)
+        {
+
+            /* 累加后面256次的值 */
+            buff[0] += MPU6050.accX;
+            buff[1] += MPU6050.accY;
+            buff[2] += MPU6050.accZ - 16384;
+            buff[3] += MPU6050.gyroX;
+            buff[4] += MPU6050.gyroY;
+            buff[5] += MPU6050.gyroZ;
+        }
+    }
+
+    /* 除以256次，直接右移8位 */
+    for (uint8_t i = 0; i < 6; i++)
+    {
+        MPU_Offset[i] = buff[i] >> 8; // shift right
+    }
+    printf("============MPU The filtered value ==============\r\n");
     printf("accX=%d\r\n", MPU6050.accX);
     printf("accY=%d\r\n", MPU6050.accY);
     printf("accZ=%d\r\n", MPU6050.accZ);

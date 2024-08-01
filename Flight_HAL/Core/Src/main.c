@@ -27,7 +27,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "LED.h"
+// #include "LED.h"
 #include "Int_MPU6050.h"
 #include "App_Flight.h"
 #include "Com_IMU.h"
@@ -53,6 +53,7 @@
 /* USER CODE BEGIN PV */
 uint32_t pData[1024];
 uint16_t ADC_Value[5];
+extern uint16_t MPU_Offset[6];
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -143,8 +144,11 @@ int main(void)
     //   // __HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_4, 499); // 左后
     // }
 
-    App_Flight_MPU_Data();
-
+    App_Flight_MPU_Offsets();
+    GetAngle(&MPU6050, &Angle, 0.006f);
+    printf("pitch=%.1f\r\n", Angle.pitch);
+    printf("roll=%.1f\r\n", Angle.roll);
+    printf("yaw=%.1f\r\n", Angle.yaw);
     // __HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_3, 499); // 右后
     // if (MPU6050.accX)
     // {

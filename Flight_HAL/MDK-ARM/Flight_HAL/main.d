@@ -38,9 +38,9 @@ flight_hal\main.o: ../Core/Inc/tim.h
 flight_hal\main.o: ../Core/Inc/usart.h
 flight_hal\main.o: D:\works\Keil5\ARM\ARMCC\Bin\..\include\stdio.h
 flight_hal\main.o: ../Core/Inc/gpio.h
-flight_hal\main.o: ../HARDWARE/LED.h
 flight_hal\main.o: ../HARDWARE/Int_MPU6050.h
 flight_hal\main.o: ..\APP\App_Flight.h
+flight_hal\main.o: ../HARDWARE/LED.h
 flight_hal\main.o: ..\Com\Com_Kalman.h
 flight_hal\main.o: ..\Com\Com_PID.h
 flight_hal\main.o: ..\Com\Com_IMU.h

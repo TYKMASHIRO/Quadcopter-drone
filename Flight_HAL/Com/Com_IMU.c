@@ -1,6 +1,9 @@
 #include "Com_IMU.h"
 #include <math.h>
-
+/**
+ * @brief Quaternion solution to Euler angles
+ *
+ */
 const float RtA = 57.2957795f;
 const float Gyro_G = 0.03051756f * 2; // 陀螺仪初始化量程+-2000度每秒于1 / (65536 / 4000) = 0.03051756*2
 const float Gyro_Gr = 0.0005326f * 2; // 面计算度每秒,转换弧度每秒则 2*0.03051756    * 0.0174533f = 0.0005326*2
