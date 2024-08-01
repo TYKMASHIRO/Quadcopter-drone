@@ -1,7 +1,7 @@
 /*
  * @Author: mashiro
  * @FilePath: NRF24L01.c
- * Copyright All Rights Reserved.
+ * Copyright  All Rights Reserved.
  */
 #include "NRF24L01.h"
 
@@ -125,6 +125,7 @@ uint8_t NRF24L01_TX_Mode(void)
     NRF24L01_Write_Reg(SPI_WRITE_REG + CONFIG, 0x0e);     // CRC使能，16位CRC校验，上电
     /* 3、使能CE */
     NRF24L01_CE_HIGH;
+    return 0;
 }
 
 /**
@@ -148,6 +149,7 @@ uint8_t NRF24L01_RX_Mode(void)
     NRF24L01_Write_Reg(SPI_WRITE_REG + RF_SETUP, 0x0f);                       // 数据传输率2Mbps，发射功率7dBm
     NRF24L01_Write_Reg(SPI_WRITE_REG + CONFIG, 0x0f);                         // CRC使能，16位CRC校验，上电，接收模式
     NRF24L01_CE_HIGH;                                                         // 拉高CE启动接收设备
+    return 0;
 }
 
 /**
