@@ -1,6 +1,6 @@
 Dependencies for Project 'Remote_HAL', Target 'Remote_HAL': (DO NOT MODIFY !)
 F (startup_stm32f103xb.s)(0x66ABE8E4)(--cpu Cortex-M3 --pd "__EVAL SETA 1" -g --apcs=interwork --pd "__MICROLIB SETA 1"-I.\RTE\_Remote_HAL-ID:\works\Keil5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-ID:\works\Keil5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include--pd "__UVISION_VERSION SETA 524" --pd "_RTE_ SETA 1" --pd "STM32F10X_MD SETA 1"--list startup_stm32f103xb.lst --xref -o remote_hal\startup_stm32f103xb.o --depend remote_hal\startup_stm32f103xb.d)
-F (../Core/Src/main.c)(0x66ABE8E3)(--c99 -c --cpu Cortex-M3 -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ..\HARDWARE -I ..\Mid\FreeRTOS -I ..\Mid\FreeRTOS\include -I ..\Mid\FreeRTOS\portable\RVDS\ARM_CM3-I.\RTE\_Remote_HAL-ID:\works\Keil5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-ID:\works\Keil5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F10X_MD -DUSE_HAL_DRIVER -DSTM32F103xB-o remote_hal\main.o --omf_browse remote_hal\main.crf --depend remote_hal\main.d)
+F (../Core/Src/main.c)(0x66ABF8AE)(--c99 -c --cpu Cortex-M3 -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ..\HARDWARE -I ..\Mid\FreeRTOS -I ..\Mid\FreeRTOS\include -I ..\Mid\FreeRTOS\portable\RVDS\ARM_CM3-I.\RTE\_Remote_HAL-ID:\works\Keil5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-ID:\works\Keil5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F10X_MD -DUSE_HAL_DRIVER -DSTM32F103xB-o remote_hal\main.o --omf_browse remote_hal\main.crf --depend remote_hal\main.d)
 I (../Core/Inc/main.h)(0x66ABE8E3)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x6690EF60)
 I (../Core/Inc/stm32f1xx_hal_conf.h)(0x66ABE8E3)
@@ -32,6 +32,7 @@ I (../Core/Inc/spi.h)(0x66ABEE47)
 I (../Core/Inc/usart.h)(0x66ABEEA5)
 I (D:\works\Keil5\ARM\ARMCC\include\stdio.h)(0x588B8344)
 I (../Core/Inc/gpio.h)(0x66ABE8E2)
+I (..\HARDWARE\NRF24L01.h)(0x66ABF581)
 F (../Core/Src/gpio.c)(0x66ABE8E2)(--c99 -c --cpu Cortex-M3 -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ..\HARDWARE -I ..\Mid\FreeRTOS -I ..\Mid\FreeRTOS\include -I ..\Mid\FreeRTOS\portable\RVDS\ARM_CM3-I.\RTE\_Remote_HAL-ID:\works\Keil5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-ID:\works\Keil5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F10X_MD -DUSE_HAL_DRIVER -DSTM32F103xB-o remote_hal\gpio.o --omf_browse remote_hal\gpio.crf --depend remote_hal\gpio.d)
 I (../Core/Inc/gpio.h)(0x66ABE8E2)
 I (../Core/Inc/main.h)(0x66ABE8E3)

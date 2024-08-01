@@ -217,10 +217,10 @@ uint8_t NRF24L01_RxPacket(uint8_t *txBuf)
         connect_flag = 0;
 
         /* =============测试：打印接收的数据================= */
-        // for (uint8_t i = 0; i < RX_PLOAD_WIDTH; i++)
-        // {
-        //     printf("receive[%d]=%02x\r\n", i, txBuf[i]);
-        // }
+        for (uint8_t i = 0; i < RX_PLOAD_WIDTH; i++)
+        {
+            printf("receive[%d]=%02x\r\n", i, txBuf[i]);
+        }
         /* ================================================ */
 
         return 0; // 成功接收数据

@@ -160,13 +160,14 @@ int main(void)
      * @brief Construct a new while object
      *        自检2.4G
      */
-
-    while (NRF24L01_Check)
+    uint8_t rx_buff[5] = {0};
+    while (NRF24L01_Check())
     {
-      /* code */
+      printf("NRF24L01 is ready\r\n");
     }
     printf("NRF24L01 is ok!\r\n");
-
+    NRF24L01_RxPacket(rx_buff);
+    HAL_Delay(4);
     // __HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_3, 499); // 右后
     // if (MPU6050.accX)
     // {
