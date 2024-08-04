@@ -63,6 +63,18 @@ void Error_Handler(void);
 #define SI_IRQ_GPIO_Port GPIOA
 #define SI_EN_Pin GPIO_PIN_15
 #define SI_EN_GPIO_Port GPIOA
+#define KEY_U_Pin GPIO_PIN_3
+#define KEY_U_GPIO_Port GPIOB
+#define KEY_L_Pin GPIO_PIN_4
+#define KEY_L_GPIO_Port GPIOB
+#define KEY_D_Pin GPIO_PIN_5
+#define KEY_D_GPIO_Port GPIOB
+#define KEY_R_Pin GPIO_PIN_6
+#define KEY_R_GPIO_Port GPIOB
+#define KEY_LEFT_X_Pin GPIO_PIN_7
+#define KEY_LEFT_X_GPIO_Port GPIOB
+#define KEY_RIGHT_X_Pin GPIO_PIN_8
+#define KEY_RIGHT_X_GPIO_Port GPIOB
 
 /* USER CODE BEGIN Private defines */
 

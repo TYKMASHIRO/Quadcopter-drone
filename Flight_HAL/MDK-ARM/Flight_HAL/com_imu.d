@@ -41,4 +41,6 @@ flight_hal\com_imu.o: ../Core/Inc/i2c.h
 flight_hal\com_imu.o: ../Com/Com_Kalman.h
 flight_hal\com_imu.o: ../Com/Com_PID.h
 flight_hal\com_imu.o: ../Core/Inc/tim.h
+flight_hal\com_imu.o: ../HARDWARE/NRF24L01.h
+flight_hal\com_imu.o: ../Core/Inc/spi.h
 flight_hal\com_imu.o: D:\works\Keil5\ARM\ARMCC\Bin\..\include\math.h

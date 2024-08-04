@@ -164,10 +164,11 @@ int main(void)
     while (NRF24L01_Check())
     {
       printf("NRF24L01 is ready\r\n");
+      HAL_Delay(1000);
     }
     printf("NRF24L01 is ok!\r\n");
     NRF24L01_RxPacket(rx_buff);
-    HAL_Delay(4);
+    HAL_Delay(1000);
     // __HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_3, 499); // 右后
     // if (MPU6050.accX)
     // {
@@ -180,6 +181,7 @@ int main(void)
     /* USER CODE END 3 */
   }
 }
+int f();
 /**
  * @brief System Clock Configuration
  * @retval None

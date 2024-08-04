@@ -175,10 +175,7 @@ void App_Flight_MPU_Offsets()
     }
 
     /* 除以256次，直接右移8位 */
-    for (uint8_t i = 0; i < 6; i++)
-    {
-        MPU_Offset[i] = buff[i] >> 8; // shift right
-    }
+
     printf("============MPU The filtered value ==============\r\n");
     printf("accX=%d\r\n", MPU6050.accX);
     printf("accY=%d\r\n", MPU6050.accY);
@@ -186,4 +183,78 @@ void App_Flight_MPU_Offsets()
     printf("gyroX=%d\r\n", MPU6050.gyroX);
     printf("gyroY=%d\r\n", MPU6050.gyroY);
     printf("gyroZ=%d\r\n", MPU6050.gyroZ);
+    for (uint8_t i = 0; i < 6; i++)
+    {
+        MPU_Offset[i] = buff[i] >> 8; // shift right
+    }
+}
+/**
+ * @description: 解析校验接收到的遥控数据
+ * @param {uint8_t} *buf 接收到的遥控数据
+ * @param {uint8_t} len 数组长度
+ * @return {*}
+ */
+void App_Flight_Remote_Check(uint8_t *buf, uint8_t len)
+{
+    connect_flag++;
+    /* ！接收函数执行完之后，执行该函数，如果正常，flag++后一定=1，除了1都不正常 */
+    if (connect_flag == 1)
+    {
+
+        uint32_t rc_sum = 0;
+        uint32_t flight_sum = 0;
+        /* 1 帧头校验 */
+        if (!((*buf == 0xAA) && (*(buf + 1) == 0xAF)))
+        {
+            /* 不满足帧头，直接返回 */
+            printf("head error,head0=%02x,head1=%02x\r\n", *buf, *(buf + 1));
+            return;
+        }
+
+        /* 2 校验和 校验 */
+        /* 2.1 取出校验和 */
+        rc_sum = *(buf + len - 4) << 24 | *(buf + len - 3) << 16 | *(buf + len - 2) << 8 | *(buf + len - 1);
+        /* 2.2 通过接收数据，自己计算一下校验和 */
+        for (uint8_t i = 0; i < len - 4; i++)
+        {
+            flight_sum += buf[i];
+        }
+
+        /* 2.3 两个做比较 */
+        if (flight_sum != rc_sum)
+        {
+            /* 计算的校验和 不等于 本身的校验和 ，非法数据，直接丢弃 */
+            printf("check sum error.....f_sum=%04x,rc_sum=%04x\r\n", flight_sum, rc_sum);
+            return;
+        }
+
+        /* 3 判断功能字，进行相应的处理：这里只有遥控数据功能，03 */
+        if (buf[2] == 0x03)
+        {
+            /* 取出遥控的数据:从索引4开始，是遥控数据了 */
+            remote.THR = (int16_t)(*(buf + 4) << 8 | *(buf + 5));
+            remote.YAW = (int16_t)(*(buf + 6) << 8 | *(buf + 7));
+            remote.ROL = (int16_t)(*(buf + 8) << 8 | *(buf + 9));
+            remote.PIT = (int16_t)(*(buf + 10) << 8 | *(buf + 11));
+            /* 辅助通道的数据aux1-aux6:从索引12开始 */
+            remote.AUX1 = (int16_t)(*(buf + 12) << 8 | *(buf + 13));
+            remote.AUX2 = (int16_t)(*(buf + 14) << 8 | *(buf + 15));
+            remote.AUX3 = (int16_t)(*(buf + 16) << 8 | *(buf + 17));
+            remote.AUX4 = (int16_t)(*(buf + 18) << 8 | *(buf + 19));
+            remote.AUX5 = (int16_t)(*(buf + 20) << 8 | *(buf + 21));
+            remote.AUX6 = (int16_t)(*(buf + 22) << 8 | *(buf + 23));
+
+            /* ====================测试：打印解析完的数据===================== */
+            // printf("THR=%d\r\n", remote.THR);
+            // printf("YAW=%d\r\n", remote.YAW);
+            // printf("ROL=%d\r\n", remote.ROL);
+            // printf("PIT=%d\r\n", remote.PIT);
+        }
+    }
+    if (connect_flag > 5000)
+    {
+        /* ！长时间失联，flag会加到一个很大的数，为了避免越界，到一定数，重新置为1（不能是0，因为还是失联） */
+        /* 这里越界的条件和复位值，注意参考后面 失联处理函数的判断时间 */
+        connect_flag = 1251;
+    }
 }

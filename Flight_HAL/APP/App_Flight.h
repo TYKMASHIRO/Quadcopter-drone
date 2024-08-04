@@ -7,7 +7,7 @@
 #include "Com_Kalman.h"
 #include "Com_PID.h"
 #include "tim.h"
-
+#include "NRF24L01.h"
 /* 定义几个宏，来代表解锁的不同状态 */
 #define ENMERGENCY_0 0 // 这个阶段判断油门是否最低，如果是，变成第二阶段
 #define WAITING_1 1    // 这个阶段判断油门是否最低，如果是，变成第二阶段

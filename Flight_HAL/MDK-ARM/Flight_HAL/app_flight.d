@@ -40,3 +40,5 @@ flight_hal\app_flight.o: ../Core/Inc/i2c.h
 flight_hal\app_flight.o: ../Com/Com_Kalman.h
 flight_hal\app_flight.o: ../Com/Com_PID.h
 flight_hal\app_flight.o: ../Core/Inc/tim.h
+flight_hal\app_flight.o: ../HARDWARE/NRF24L01.h
+flight_hal\app_flight.o: ../Core/Inc/spi.h
