@@ -463,9 +463,9 @@ Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M3 --apcs=interw
 ork --depend=flight_hal\startup_stm32f103xb.d -oflight_hal\startup_stm32f103xb.
 o -I.\RTE\_Flight_HAL -ID:\works\Keil5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include -
 ID:\works\Keil5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include --predefine="_
-_EVAL SETA 1" --predefine="__MICROLIB SETA 1" --predefine="__UVISION_VERSION SE
-TA 524" --predefine="_RTE_ SETA 1" --predefine="STM32F10X_MD SETA 1" --list=sta
-rtup_stm32f103xb.lst startup_stm32f103xb.s
+_MICROLIB SETA 1" --predefine="__UVISION_VERSION SETA 524" --predefine="_RTE_ S
+ETA 1" --predefine="STM32F10X_MD SETA 1" --list=startup_stm32f103xb.lst startup
+_stm32f103xb.s
 
 
 
@@ -1172,4 +1172,4 @@ Symbol: __main
       At line 134 in file startup_stm32f103xb.s
 Comment: __main used once
 2 symbols
-407 symbols in table
+406 symbols in table

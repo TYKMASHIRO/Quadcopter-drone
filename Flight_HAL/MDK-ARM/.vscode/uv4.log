@@ -28,4 +28,4 @@ JTAG speed: 4000 kHz
 
 Erase Done.Programming Done.Verify OK.**JLink Warning: Mis-aligned memory write: Address: 0x20000000, NumBytes: 2, Alignment: 2 (Halfword-aligned)
 Application running ...
-Flash Load finished at 05:16:05
+Flash Load finished at 08:23:26

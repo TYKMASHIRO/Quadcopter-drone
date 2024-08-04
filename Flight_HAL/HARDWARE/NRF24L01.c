@@ -161,7 +161,7 @@ uint8_t NRF24L01_TxPacket(uint8_t *txBuf)
 {
     uint8_t state = 0;
     /* 1、使用写Tx FIFO指令，将数据发送 */
-    NRF24L01_CE_LOW; // 拉低是为了确保不进入空闲模式
+    NRF24L01_CE_LOW; // 拉低是为了确保不进入空闲模式 ps:具体见数据手册
     NRF24L01_Write_Buf(WR_TX_PLOAD, txBuf, TX_PLOAD_WIDTH);
     NRF24L01_CE_HIGH; // 确保进入发射模式
 

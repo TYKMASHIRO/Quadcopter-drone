@@ -5,7 +5,8 @@
  */
 #include "NRF24L01.h"
 
-uint8_t TX_ADDRESS[TX_ADR_WIDTH] = {0x0A, 0x01, 0x07, 0x0E, 0x01}; // 定义一个静态发送地址
+uint8_t TX_ADDRESS[TX_ADR_WIDTH] = {0x0A, 0x0+
+1, 0x07, 0x0E, 0x01}; // 定义一个静态发送地址
 uint8_t RX_ADDRESS[RX_ADR_WIDTH] = {0x0A, 0x01, 0x07, 0x0E, 0x01}; // 定义一个静态发送地址
 
 uint8_t TX_BUFF[TX_PLOAD_WIDTH];
