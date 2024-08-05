@@ -130,7 +130,13 @@ int main(void)
    */
   // HAL_ADC_Start_DMA(&hadc1, (uint32_t *)&pData[0], 1);
   /* USER CODE END 2 */
-
+  while (NRF24L01_Check())
+  {
+    printf("NRF24L01 is ready\r\n");
+  }
+  printf("NRF24L01 is ok!\r\n");
+  NRF24L01_RX_Mode();
+  uint8_t rx_buff[28] = {0};
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
@@ -160,15 +166,20 @@ int main(void)
      * @brief Construct a new while object
      *        自检2.4G
      */
-    uint8_t rx_buff[5] = {0};
-    while (NRF24L01_Check())
-    {
-      printf("NRF24L01 is ready\r\n");
-      HAL_Delay(1000);
-    }
-    printf("NRF24L01 is ok!\r\n");
     NRF24L01_RxPacket(rx_buff);
-    HAL_Delay(1000);
+    HAL_Delay(4);
+    // uint8_t rx_buff[28] = {0};
+    // // while (NRF24L01_Check())
+    // // {
+    // //   printf("NRF24L01 is ready\r\n");
+    // //   HAL_Delay(1000);
+    // // }
+    // // printf("NRF24L01 is ok!\r\n");
+    // NRF24L01_RxPacket(rx_buff);
+    // App_Flight_Remote_Check(rx_buff, 28);
+    // App_Flight_RC_Analysis();
+    // printf("NRF24L01 is ok! 2222\r\n");
+    // HAL_Delay(4);
     // __HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_3, 499); // 右后
     // if (MPU6050.accX)
     // {

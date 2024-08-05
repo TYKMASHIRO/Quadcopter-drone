@@ -97,6 +97,7 @@ uint8_t NRF24L01_Read_Buf(uint8_t reg, uint8_t *pBuf, uint8_t len)
     for (uint8_t i = 0; i < len; i++)
     {
         *pBuf++ = Driver_SPI_SwapByte(0);
+        printf("pBuf[%d] = %2x\r\n", i, pBuf[i]);
     }
 
     /* 4、片选取消 */

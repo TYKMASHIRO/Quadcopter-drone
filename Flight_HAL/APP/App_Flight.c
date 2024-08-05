@@ -197,7 +197,7 @@ void App_Flight_MPU_Offsets()
 void App_Flight_Remote_Check(uint8_t *buf, uint8_t len)
 {
     connect_flag++;
-    /* ！接收函数执行完之后，执行该函数，如果正常，flag++后一定=1，除了1都不正常 */
+    /* ！接收函数执行完之后，执行该函数，用来判断是否失联不然在2.4G信号外就不可控，如果正常，flag++后一定=1，除了1都不正常 */
     if (connect_flag == 1)
     {
 
@@ -338,6 +338,7 @@ void App_Flight_RC_Unlock()
         }
         break;
     case EXIT:
+        // 这里直接进行退出
         printf("!!!!!!!!!!!!!!!!! exit\r\n");
         unlock_flag = 0;
         time_count = 0;
@@ -345,5 +346,66 @@ void App_Flight_RC_Unlock()
         break;
     default:
         status = EXIT;
+    }
+}
+
+/**
+ * @description: 遥控指令解析（比如解锁指令），添加失联后的处理逻辑
+ * @return {*}
+ */
+void App_Flight_RC_Analysis()
+{
+    static uint16_t flag = 4;
+    static uint16_t thr_count = 0;
+    static uint16_t disconnect_count = 0;
+    
+
+    if (connect_flag == 1)
+    {
+        /* 执行解锁指令 */
+        App_Flight_RC_Unlock();
+        while (flag--)
+        {
+            printf("iscoming\r\n");
+        }
+        flag = 4;
+    }
+    else
+    {
+        /* 失联: 超过3s，判定失联，进行处理 */
+        if (connect_flag > 1250) // 测试时，稍微调大点观察
+        {
+            printf("remote disconnect......\r\n");
+            /* 2 慢慢降低油门落地 */
+            /* 2.1 除了油门，全部归中 */
+            remote.PIT = 1500;
+            remote.ROL = 1500;
+            remote.YAW = 1500;
+            /* 2.2 油门很低，直接清 */
+            if (remote.THR < 1200)
+            {
+                remote.THR = 1000;
+                /* 进入这个if，有两种情况：
+                    1、原来就低于1200
+                    2、原来油门不低，但是缓慢减小，最终捡到低于1200，进入这个if */
+                printf("restart 2.4G\r\n");
+                while (NRF24L01_Check())
+                    ;
+                // 进行重新连接
+                NRF24L01_RX_Mode();
+                printf("restart 2.4G suc\r\n");
+            }
+            /* 2.3 原先油门不算低，缓慢减少油门值 */
+            else
+            {
+                if (thr_count++ > 100) // 假设10ms执行一次，100次=1s
+                {
+                    printf("thr -50\r\n");
+                    remote.THR -= 50;
+                    thr_count = 0;
+                }
+            }
+            remote.THR = LIMIT(remote.THR, 1000, 2000);
+        }
     }
 }

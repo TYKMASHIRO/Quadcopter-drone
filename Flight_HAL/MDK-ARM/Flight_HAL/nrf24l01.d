@@ -34,3 +34,4 @@ flight_hal\nrf24l01.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h
 flight_hal\nrf24l01.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h
 flight_hal\nrf24l01.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h
 flight_hal\nrf24l01.o: ../Core/Inc/spi.h
+flight_hal\nrf24l01.o: D:\works\Keil5\ARM\ARMCC\Bin\..\include\stdio.h

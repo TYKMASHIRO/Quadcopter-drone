@@ -36,3 +36,4 @@ remote_hal\main.o: ../Core/Inc/usart.h
 remote_hal\main.o: D:\works\Keil5\ARM\ARMCC\Bin\..\include\stdio.h
 remote_hal\main.o: ../Core/Inc/gpio.h
 remote_hal\main.o: ../HARDWARE/NRF24L01.h
+remote_hal\main.o: ../App/App_Remote.h
