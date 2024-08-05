@@ -42,3 +42,4 @@ flight_hal\app_flight.o: ../Com/Com_PID.h
 flight_hal\app_flight.o: ../Core/Inc/tim.h
 flight_hal\app_flight.o: ../HARDWARE/NRF24L01.h
 flight_hal\app_flight.o: ../Core/Inc/spi.h
+flight_hal\app_flight.o: D:\works\Keil5\ARM\ARMCC\Bin\..\include\stdio.h

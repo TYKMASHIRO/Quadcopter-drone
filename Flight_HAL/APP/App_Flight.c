@@ -258,3 +258,92 @@ void App_Flight_Remote_Check(uint8_t *buf, uint8_t len)
         connect_flag = 1251;
     }
 }
+/**
+ * @description: 根据指令，判断和解锁飞机
+ * @return {*}
+ */
+void App_Flight_RC_Unlock()
+{
+    /* 解锁指令：油门最低 --》 油门最高 --》 油门最低 ==》 解锁 */
+    static uint8_t status = WAITING_1; // 默认阶段1
+    static uint16_t time_count = 0;
+
+    if (status == ENMERGENCY_0)
+    {
+        /* 为了安全，加一道判断，如果是紧急状态，直接退出 */
+        status = EXIT;
+    }
+
+    switch (status)
+    {
+    case WAITING_1:
+        /* 阶段1：判断油门是否最低 */
+        if (remote.THR < 1030)
+        {
+            printf(">>>>>>>>>>>>>>> w1\r\n");
+            /* 1030放点水，不要卡太死。油门是低，准备进入阶段2 */
+            status = WAITING_2;
+        }
+        break;
+    case WAITING_2:
+        /* 阶段2：说明之前已经油门最低，现在要判断油门是否最高 */
+        if (remote.THR > 1900)
+        {
+            printf("<<<<<<<<<<<< w2\r\n");
+            /* 1900放点水，不卡太死。油门是高，准备进入阶段3 */
+            time_count++;
+            if (time_count > 50) // 假设该函数10ms调用一次，50*10ms=500ms
+            {
+                status = WAITING_3;
+                time_count = 0;
+            }
+        }
+        break;
+    case WAITING_3:
+        /* 阶段3：标志前面已经 油门最低-》油门最高（保持时间）。现在判断油门是否拉低，如果是，准别进入阶段4 */
+        if (remote.THR < 1030)
+        {
+            printf(">>>>>>>>>>>>>>> w3\r\n");
+            /* 1030放水。油门是低，准备进入阶段4 */
+            status = WAITING_4;
+        }
+        break;
+    case WAITING_4:
+        /* 阶段4：前面解锁步骤完成。进行一些解锁后的处理，比如标志位 */
+        /* 将解锁标志位置位1，表示解锁完成状态，方便其他函数做判断 */
+        printf("<<<<<<<<<<<<<<<<<< w4\r\n");
+        unlock_flag = 1;
+        status = PROCESS;
+
+        break;
+    case PROCESS:
+        /* 说明解锁完毕，准备阶段渡过，正式进入控制 */
+        /* 为了安全，解锁后长时间不操作，又锁定 */
+        printf("======================== p\r\n");
+        if (remote.THR < 1030)
+        {
+            /* 说明油门没有动，开始计时 */
+            if (time_count++ > 1000)
+            {
+                /* 说明已经长时间没操作=》清标志位、回复到阶段1、count清零 */
+                unlock_flag = 0;
+                status = WAITING_1;
+                time_count = 0;
+            }
+        }
+        /* 如果标志位被清零，直接退出控制，进入退出状态 */
+        if (!unlock_flag)
+        {
+            status = EXIT;
+        }
+        break;
+    case EXIT:
+        printf("!!!!!!!!!!!!!!!!! exit\r\n");
+        unlock_flag = 0;
+        time_count = 0;
+        status = WAITING_1;
+        break;
+    default:
+        status = EXIT;
+    }
+}

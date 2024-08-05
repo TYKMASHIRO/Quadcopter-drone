@@ -116,7 +116,7 @@ int main(void)
     {
       /*===== 2.4G test_TX =====*/
       // NRF24L01_TxPacket(tx_buff[0]);
-
+			printf("Ciallo~\r\n");
       /*===== 测试摇杆ADC =====*/
       printf("leftlr=%d\r\n", ADC_Value[0]);
       HAL_Delay(1000);
