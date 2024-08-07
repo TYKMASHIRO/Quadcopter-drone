@@ -31,3 +31,4 @@ remote_hal\nrf24l01.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h
 remote_hal\nrf24l01.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h
 remote_hal\nrf24l01.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h
 remote_hal\nrf24l01.o: ../Core/Inc/spi.h
+remote_hal\nrf24l01.o: D:\works\Keil5\ARM\ARMCC\Bin\..\include\stdio.h

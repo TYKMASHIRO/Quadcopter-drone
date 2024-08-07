@@ -54,7 +54,7 @@
 
 /* USER CODE BEGIN PV */
 uint32_t pData[1024];
-uint16_t ADC_Value[5];
+uint16_t ADC_Value[10];
 extern uint16_t MPU_Offset[6];
 /* USER CODE END PV */
 
@@ -107,10 +107,10 @@ int main(void)
   Int_MPU6050_Init(); /*mpu6050初始�?*/
 
   // 启动pwm,当我们用寄存器初始化他不用开,而hal库却要开
-  HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_1);
-  HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_2);
-  HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_3);
-  HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_4);
+  // HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_1);
+  // HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_2);
+  // HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_3);
+  // HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_4);
   /**
    *  左前：HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
    *        右前：HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_2);
@@ -128,7 +128,7 @@ int main(void)
    *  test ADC
    *
    */
-  // HAL_ADC_Start_DMA(&hadc1, (uint32_t *)&pData[0], 1);
+  HAL_ADC_Start_DMA(&hadc1, (uint32_t *)ADC_Value, 10);
   /* USER CODE END 2 */
   while (NRF24L01_Check())
   {
@@ -136,6 +136,7 @@ int main(void)
   }
   printf("NRF24L01 is ok!\r\n");
   NRF24L01_RX_Mode();
+  printf("NRF24L01 is ok! 2222\r\n");
   uint8_t rx_buff[28] = {0};
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */

@@ -220,7 +220,7 @@ uint8_t NRF24L01_RxPacket(uint8_t *txBuf)
         /* =============测试：打印接收的数据================= */
         for (uint8_t i = 0; i < RX_PLOAD_WIDTH; i++)
         {
-            printf("receive[%d]=%02x\r\n", i, txBuf[i]);
+            // printf("receive[%d]=%02x\r\n", i, txBuf[i]);
         }
         /* ================================================ */
 
@@ -249,6 +249,8 @@ uint8_t NRF24L01_Check()
     /* 3、判断是否相同 */
     for (uint8_t i = 0; i < 5; i++)
     {
+        printf("receive[%d]=%02x\r\n", i, buff_r[i]);
+        printf("send[%d]=%02x\r\n", i, buff_w[i]);
         if (buff_r[i] == buff_w[i])
         {
             count++;

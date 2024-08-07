@@ -3,7 +3,7 @@
 
 #include "main.h"
 #include "spi.h"
-
+#include "stdio.h"
 #define NRF24L01_CSN_HIGH HAL_GPIO_WritePin(SPI1_NSS_GPIO_Port, SPI1_NSS_Pin, GPIO_PIN_SET)
 #define NRF24L01_CSN_LOW HAL_GPIO_WritePin(SPI1_NSS_GPIO_Port, SPI1_NSS_Pin, GPIO_PIN_RESET)
 #define NRF24L01_CE_HIGH HAL_GPIO_WritePin(SI_EN_GPIO_Port, SI_EN_Pin, GPIO_PIN_SET)
