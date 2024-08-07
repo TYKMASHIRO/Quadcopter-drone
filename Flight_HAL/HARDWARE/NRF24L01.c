@@ -5,8 +5,8 @@
  */
 #include "NRF24L01.h"
 
-uint8_t TX_ADDRESS[TX_ADR_WIDTH] = {0x0A, 0x01, 0x07, 0x0E, 0x01}; // 定义一个静态发送地址
-uint8_t RX_ADDRESS[RX_ADR_WIDTH] = {0x0A, 0x01, 0x07, 0x0E, 0x01}; // 定义一个静态发送地址
+uint8_t TX_ADDRESS[TX_ADR_WIDTH] = {0x0A, 0x0 + 1, 0x07, 0x0E, 0x01}; // 定义一个静态发送地址
+uint8_t RX_ADDRESS[RX_ADR_WIDTH] = {0x0A, 0x01, 0x07, 0x0E, 0x01};    // 定义一个静态发送地址
 
 uint8_t TX_BUFF[TX_PLOAD_WIDTH];
 uint8_t RX_BUFF[RX_PLOAD_WIDTH];
@@ -97,7 +97,6 @@ uint8_t NRF24L01_Read_Buf(uint8_t reg, uint8_t *pBuf, uint8_t len)
     for (uint8_t i = 0; i < len; i++)
     {
         *pBuf++ = Driver_SPI_SwapByte(0);
-        printf("pBuf[%d] = %2x\r\n", i, pBuf[i]);
     }
 
     /* 4、片选取消 */
@@ -162,7 +161,7 @@ uint8_t NRF24L01_TxPacket(uint8_t *txBuf)
 {
     uint8_t state = 0;
     /* 1、使用写Tx FIFO指令，将数据发送 */
-    NRF24L01_CE_LOW; // 拉低是为了确保不进入空闲模式 ps:具体见数据手册
+    NRF24L01_CE_LOW; // 拉低是为了确保不进入空闲模式
     NRF24L01_Write_Buf(WR_TX_PLOAD, txBuf, TX_PLOAD_WIDTH);
     NRF24L01_CE_HIGH; // 确保进入发射模式
 
@@ -218,10 +217,10 @@ uint8_t NRF24L01_RxPacket(uint8_t *txBuf)
         connect_flag = 0;
 
         /* =============测试：打印接收的数据================= */
-        for (uint8_t i = 0; i < RX_PLOAD_WIDTH; i++)
-        {
-            // printf("receive[%d]=%02x\r\n", i, txBuf[i]);
-        }
+        // for (uint8_t i = 0; i < RX_PLOAD_WIDTH; i++)
+        // {
+        //     printf("receive[%d]=%02x\r\n", i, txBuf[i]);
+        // }
         /* ================================================ */
 
         return 0; // 成功接收数据

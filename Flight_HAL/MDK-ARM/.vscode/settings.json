@@ -17,6 +17,7 @@
         "com_imu.h": "c",
         "main.h": "c",
         "spi.h": "c",
-        "nrf24l01.h": "c"
+        "nrf24l01.h": "c",
+        "stdio.h": "c"
     }
 }
