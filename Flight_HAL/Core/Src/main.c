@@ -103,6 +103,7 @@ int main(void)
   MX_ADC1_Init();
   MX_I2C1_Init();
   MX_SPI1_Init();
+  MX_SPI2_Init();
   /* USER CODE BEGIN 2 */
   Int_MPU6050_Init(); /*mpu6050初始�?*/
 
@@ -133,7 +134,7 @@ int main(void)
   {
     printf("NRF24L01 Check Failed!\r\n");
   }
-  printf("remote check ok...\r\n");
+  printf("remote check ok！！！！！...\r\n");
   // 初始化为发送模式
   NRF24L01_RX_Mode();
   /* USER CODE END 2 */
