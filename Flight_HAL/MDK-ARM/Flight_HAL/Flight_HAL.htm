@@ -3,7 +3,7 @@
 <title>Static Call Graph - [Flight_HAL\Flight_HAL.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image Flight_HAL\Flight_HAL.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060528: Last Updated: Thu Aug 08 21:10:36 2024
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060528: Last Updated: Fri Aug 09 21:29:52 2024
 <BR><P>
 <H3>Maximum Stack Usage =        224 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -935,12 +935,13 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NRF24L01_RxPacket
 </UL>
 
-<P><STRONG><a name="[a6]"></a>NRF24L01_RxPacket</STRONG> (Thumb, 58 bytes, Stack size 16 bytes, nrf24l01.o(i.NRF24L01_RxPacket))
+<P><STRONG><a name="[a6]"></a>NRF24L01_RxPacket</STRONG> (Thumb, 82 bytes, Stack size 16 bytes, nrf24l01.o(i.NRF24L01_RxPacket))
 <BR><BR>[Stack]<UL><LI>Max Depth = 176<LI>Call Chain = NRF24L01_RxPacket &rArr; NRF24L01_Read_Buf &rArr; Driver_SPI_SwapByte &rArr; HAL_SPI_TransmitReceive &rArr; SPI_EndRxTxTransaction &rArr; SPI_WaitFlagStateUntilTimeout
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NRF24L01_Write_Reg
 <LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NRF24L01_Read_Reg
 <LI><a href="#[a1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NRF24L01_Read_Buf
+<LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2printf
 </UL>
 <BR>[Called By]<UL><LI><a href="#[35]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -1026,7 +1027,8 @@ Global Symbols
 <P><STRONG><a name="[a2]"></a>__2printf</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printf8.o(i.__0printf$8))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = __2printf
 </UL>
-<BR>[Called By]<UL><LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NRF24L01_Check
+<BR>[Called By]<UL><LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NRF24L01_RxPacket
+<LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NRF24L01_Check
 <LI><a href="#[35]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
