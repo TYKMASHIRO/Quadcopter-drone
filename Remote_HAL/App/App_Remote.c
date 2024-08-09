@@ -50,58 +50,58 @@ void App_Remote_Window_Filter(struct _Rc *rc)
  * @param {_Rc} *rc
  * @return {*}
  */
-// void App_Remote_Mid_Offset(struct _Rc *rc)
-// {
-//     static uint16_t key_count = 0;
-//     static uint32_t sum_thr = 0, sum_pit = 0, sum_roll = 0, sum_yaw = 0;
-//     static uint16_t count = 0;
-//     /* 判断按键长按 */
-//     if (!READ_KEY_LEFT_X)
-//     {
-//         printf("start offset...\r\n");
-//         key_count++;
-//         if (key_count >= 20) // 暂时按照main函数while中的延时来调整
-//         {
-//             /* 长按了，开始校准中点 =》 偏差值 = 50次的和/50 - 1500 */
-//             if (count == 0)
-//             {
-//                 /* count=0时，进行初始化，包括累加值、偏差值 */
-//                 sum_thr = 0;
-//                 sum_pit = 0;
-//                 sum_roll = 0;
-//                 sum_yaw = 0;
-//                 offset.THR = 0;
-//                 offset.PIT = 0;
-//                 offset.ROL = 0;
-//                 offset.YAW = 0;
-//                 /* count+1，下次不再进初始化 */
-//                 count = 1;
-//                 return;
-//             }
-//             else
-//             {
-//                 /* 开始累加50次、计数（2-51） */
-//                 count++;
-//                 sum_thr += rc->THR;
-//                 sum_pit += rc->PIT;
-//                 sum_roll += rc->ROL;
-//                 sum_yaw += rc->YAW;
-//             }
-//             if (count == 51)
-//             {
-//                 count--;                             // 进入这里count已经是51，实际累加了50次
-//                 offset.THR = sum_thr / count - 1000; // 油门特殊，最低校准
-//                 offset.PIT = sum_pit / count - 1500;
-//                 offset.ROL = sum_roll / count - 1500;
-//                 offset.YAW = sum_yaw / count - 1500;
+void App_Remote_Mid_Offset(struct _Rc *rc)
+{
+    static uint16_t key_count = 0;
+    static uint32_t sum_thr = 0, sum_pit = 0, sum_roll = 0, sum_yaw = 0;
+    static uint16_t count = 0;
+    /* 判断按键长按 */
+    if (!READ_KEY_LEFT_X)
+    {
+        printf("start offset...\r\n");
+        key_count++;
+        if (key_count >= 20) // 暂时按照main函数while中的延时来调整
+        {
+            /* 长按了，开始校准中点 =》 偏差值 = 50次的和/50 - 1500 */
+            if (count == 0)
+            {
+                /* count=0时，进行初始化，包括累加值、偏差值 */
+                sum_thr = 0;
+                sum_pit = 0;
+                sum_roll = 0;
+                sum_yaw = 0;
+                offset.THR = 0;
+                offset.PIT = 0;
+                offset.ROL = 0;
+                offset.YAW = 0;
+                /* count+1，下次不再进初始化 */
+                count = 1;
+                return;
+            }
+            else
+            {
+                /* 开始累加50次、计数（2-51） */
+                count++;
+                sum_thr += rc->THR;
+                sum_pit += rc->PIT;
+                sum_roll += rc->ROL;
+                sum_yaw += rc->YAW;
+            }
+            if (count == 51)
+            {
+                count--;                             // 进入这里count已经是51，实际累加了50次
+                offset.THR = sum_thr / count - 1000; // 油门特殊，最低校准
+                offset.PIT = sum_pit / count - 1500;
+                offset.ROL = sum_roll / count - 1500;
+                offset.YAW = sum_yaw / count - 1500;
 
-//                 /* 获取到偏差值后，再去清零count、key_count */
-//                 count = 0;
-//                 key_count = 0;
-//             }
-//         }
-//     }
-// }
+                /* 获取到偏差值后，再去清零count、key_count */
+                count = 0;
+                key_count = 0;
+            }
+        }
+    }
+}
 
 /**
  * @description: 最大值、最小值限幅
@@ -185,23 +185,23 @@ void App_Remote_Stick_Scan()
  */
 void App_Remote_KeyPress()
 {
-/*
-    整个标志位变量=
-    if(按键按下&& 标志位==0)
-    {
-        延迟一下
-        if(按键按下 && 标志位==0)
+    /*
+        整个标志位变量=
+        if(按键按下&& 标志位==0)
         {
-            处理逻辑；
-            标志=1；
-        }
+            延迟一下
+            if(按键按下 && 标志位==0)
+            {
+                处理逻辑；
+                标志=1；
+            }
 
-    }
-    if(按键松开 && 标志位=1)
-    {
-        标志位=0；
-    }
- */
+        }
+        if(按键松开 && 标志位=1)
+        {
+            标志位=0；
+        }
+     */
 
     /* 1、判断哪个按键按下，对应的去微调 */
     if (!READ_KEY_U)
@@ -234,7 +234,7 @@ void App_Remote_KeyPress()
 void App_Remote_RemoteData(uint8_t *remote_send)
 {
     uint8_t index = 0;
-    uint32_t check_sum=0;
+    uint32_t check_sum = 0;
     /* 协议：帧头+功能字+长度+数据+校验和 */
     /* 1 帧头 */
     remote_send[index++] = 0xAA;
@@ -279,5 +279,4 @@ void App_Remote_RemoteData(uint8_t *remote_send)
     remote_send[index++] = (uint8_t)(check_sum >> 16);
     remote_send[index++] = (uint8_t)(check_sum >> 8);
     remote_send[index++] = (uint8_t)(check_sum);
-
 }

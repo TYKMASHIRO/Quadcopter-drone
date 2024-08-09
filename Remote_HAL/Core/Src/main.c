@@ -48,7 +48,7 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-uint32_t ADC_Value[10];
+uint16_t ADC_Value[4];
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -102,21 +102,21 @@ int main(void)
         2: 右摇杆的左右
         3: 右摇杆的上下
   */
-  HAL_ADC_Start_DMA(&hadc1, (uint32_t *)ADC_Value, 10);
-  //初始化2.4G
-  while (NRF24L01_Check())
-  {
-    printf("NRF24L01 Check Failed!\r\n");
-  }
-  printf("remote check ok...\r\n");
-  //初始化为发送模式
-  NRF24L01_TX_Mode();
-  
+  HAL_ADC_Start_DMA(&hadc1, (uint32_t *)&ADC_Value[0], 4);
+  // 初始化2.4G
+  // while (NRF24L01_Check())
+  // {
+  //   printf("NRF24L01 Check Failed!\r\n");
+  // }
+  // printf("remote check ok...\r\n");
+  // // 初始化为发送模式
+  // NRF24L01_TX_Mode();
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  uint8_t tx_buff[28] = {0xA1, 0xA2, 0xA3, 0xA4, 0xA5};
+  uint8_t tx_buff[28] = {0};
   while (1)
   {
     /* USER CODE END WHILE */
@@ -125,13 +125,15 @@ int main(void)
     while (1)
     {
       /*===== 2.4G test_TX =====*/
-      NRF24L01_TxPacket(tx_buff);
+      // NRF24L01_TxPacket(tx_buff);
       // // printf("Ciallo~\r\n");
       // // /*===== 测试摇杆ADC =====*/
-      // // printf("left lr=%u\r\n",ADC_Value[0]);
-      // // printf("left ud=%u\r\n",ADC_Value[1]);
-      // // printf("right lr=%u\r\n",ADC_Value[2]);
-      // // printf("right ud=%u\r\n",ADC_Value[3]);
+
+      printf("right ud=%u\r\n", ADC_Value[0]);
+      printf("left ll=%u\r\n", ADC_Value[1]);
+      printf("right lr=%u\r\n", ADC_Value[2]);
+      printf("left ul=%u\r\n", ADC_Value[3]);
+      HAL_Delay(500);
       // App_Remote_Stick_Scan();
       // App_Remote_KeyPress();
     }
