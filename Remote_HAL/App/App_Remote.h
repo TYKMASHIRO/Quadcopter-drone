@@ -16,10 +16,10 @@
 
 struct _Rc
 {
-    int16_t THR; // 油门：左摇杆上下
+    int16_t THR; // 油门：右摇杆上下
     int16_t YAW; // 偏航：左摇杆左右
     int16_t ROL; // 横滚：右摇杆左右
-    int16_t PIT; // 俯仰：右摇杆上下
+    int16_t PIT; // 俯仰：左摇杆上下
     /* 预留了6个辅助通道：具体什么用途，自己定义，在这里我们不用 */
     int16_t AUX1;
     int16_t AUX2;
@@ -31,10 +31,10 @@ struct _Rc
 
 struct _Offset
 {
-    int16_t THR; // 油门：左摇杆上下
+    int16_t THR; // 油门：右摇杆上下
     int16_t YAW; // 偏航：左摇杆左右
     int16_t ROL; // 横滚：右摇杆左右
-    int16_t PIT; // 俯仰：右摇杆上下
+    int16_t PIT; // 俯仰：左摇杆上下
 };
 
 struct _Filter

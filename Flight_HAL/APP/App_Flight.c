@@ -245,10 +245,10 @@ void App_Flight_Remote_Check(uint8_t *buf, uint8_t len)
             remote.AUX6 = (int16_t)(*(buf + 22) << 8 | *(buf + 23));
 
             /* ====================测试：打印解析完的数据===================== */
-            // printf("THR=%d\r\n", remote.THR);
-            // printf("YAW=%d\r\n", remote.YAW);
-            // printf("ROL=%d\r\n", remote.ROL);
-            // printf("PIT=%d\r\n", remote.PIT);
+            printf("THR=%d\r\n", remote.THR);
+            printf("YAW=%d\r\n", remote.YAW);
+            printf("ROL=%d\r\n", remote.ROL);
+            printf("PIT=%d\r\n", remote.PIT);
         }
     }
     if (connect_flag > 5000)

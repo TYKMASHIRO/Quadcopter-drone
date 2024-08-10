@@ -159,14 +159,14 @@ void App_Remote_Stick_Scan()
 {
     /* 1、将ADC的值转换为 1000-2000的范围，并且处理极性 */
     /*
-        0: 左摇杆的左右
-        1: 左摇杆的上下
-        2: 右摇杆的左右
-        3: 右摇杆的上下
+        0: 右摇杆的左右
+        1: 右摇杆的上下
+        2: 左摇杆的左右
+        3: 左摇杆的上下
      */
-    rc.THR = 2000 - (uint16_t)(0.25f * ADC_Value[1]) - offset.THR;
-    rc.PIT = 2000 - (uint16_t)(0.25f * ADC_Value[3]) - offset.PIT;
-    rc.ROL = 2000 - (uint16_t)(0.25f * ADC_Value[2]) - offset.ROL;
+    rc.THR = 1000 + (uint16_t)(0.25f * ADC_Value[1]) - offset.THR;
+    rc.PIT = 1000 + (uint16_t)(0.25f * ADC_Value[3]) - offset.PIT;
+    rc.ROL = 1000 + (uint16_t)(0.25f * ADC_Value[2]) - offset.ROL;
     rc.YAW = 2000 - (uint16_t)(0.25f * ADC_Value[0]) - offset.YAW;
 
     /* 滑动窗口滤波：变化变得平缓 */
