@@ -170,7 +170,10 @@ int main(void)
      *        自检2.4G
      */
     NRF24L01_RxPacket(rx_buff);
-    HAL_Delay(4);
+    
+
+    App_Flight_Remote_Check(rx_buff, 28);
+    HAL_Delay(120);
     // uint8_t rx_buff[28] = {0};
     // // while (NRF24L01_Check())
     // // {

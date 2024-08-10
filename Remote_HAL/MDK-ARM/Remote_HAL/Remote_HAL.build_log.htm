@@ -27,14 +27,6 @@ Project File Date:  08/10/2024
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 5 (build 528)', folder: 'D:\works\Keil5\ARM\ARMCC\Bin'
 Build target 'Remote_HAL'
-compiling App_Remote.c...
-..\App\App_Remote.h(49): warning:  #1295-D: Deprecated declaration App_Remote_Stick_Scan - give arg types
-  void App_Remote_Stick_Scan();
-..\App\App_Remote.h(51): warning:  #1295-D: Deprecated declaration App_Remote_KeyPress - give arg types
-  void App_Remote_KeyPress();
-..\App\App_Remote.c(61): warning:  #223-D: function "printf" declared implicitly
-          printf("start offset...\r\n");
-..\App\App_Remote.c: 3 warnings, 0 errors
 compiling main.c...
 ../HARDWARE/NRF24L01.h(85): warning:  #1295-D: Deprecated declaration NRF24L01_Check - give arg types
   uint8_t NRF24L01_Check();
@@ -42,13 +34,11 @@ compiling main.c...
   void App_Remote_Stick_Scan();
 ../App/App_Remote.h(51): warning:  #1295-D: Deprecated declaration App_Remote_KeyPress - give arg types
   void App_Remote_KeyPress();
-../Core/Src/main.c(119): warning:  #177-D: variable "tx_buff"  was declared but never referenced
-    uint8_t tx_buff[28] = {0};
-../Core/Src/main.c: 4 warnings, 0 errors
+../Core/Src/main.c: 3 warnings, 0 errors
 linking...
-Program Size: Code=9916 RO-data=312 RW-data=92 ZI-data=2044  
+Program Size: Code=13016 RO-data=312 RW-data=136 ZI-data=2160  
 FromELF: creating hex file...
-"Remote_HAL\Remote_HAL.axf" - 0 Error(s), 7 Warning(s).
+"Remote_HAL\Remote_HAL.axf" - 0 Error(s), 3 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -71,7 +61,7 @@ Package Vendor: Keil
 <h2>Collection of Component Files used:</h2>
 
    * Component: ARM::CMSIS:CORE:5.0.1
-Build Time Elapsed:  00:00:02
+Build Time Elapsed:  00:00:01
 </pre>
 </body>
 </html>

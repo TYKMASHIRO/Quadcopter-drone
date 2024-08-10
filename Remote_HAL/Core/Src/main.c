@@ -104,13 +104,13 @@ int main(void)
   */
   HAL_ADC_Start_DMA(&hadc1, (uint32_t *)&ADC_Value[0], 4);
   // 初始化2.4G
-  // while (NRF24L01_Check())
-  // {
-  //   printf("NRF24L01 Check Failed!\r\n");
-  // }
-  // printf("remote check ok...\r\n");
-  // // 初始化为发送模式
-  // NRF24L01_TX_Mode();
+  while (NRF24L01_Check())
+  {
+    printf("NRF24L01 Check Failed!\r\n");
+  }
+  printf("remote check ok...\r\n");
+  // 初始化为发送模式
+  NRF24L01_TX_Mode();
 
   /* USER CODE END 2 */
 
@@ -128,12 +128,21 @@ int main(void)
       // NRF24L01_TxPacket(tx_buff);
       // // printf("Ciallo~\r\n");
       // // /*===== 测试摇杆ADC =====*/
+      App_Remote_Stick_Scan();
+      App_Remote_KeyPress();
+      printf("thr=%d\r\n", rc.THR);
+      printf("pitch=%d\r\n", rc.PIT);
+      printf("roll=%d\r\n", rc.ROL);
+      printf("yaw=%d\r\n", rc.YAW);
+      App_Remote_RemoteData(tx_buff);
 
-      printf("right ud=%u\r\n", ADC_Value[0]);
-      printf("left ll=%u\r\n", ADC_Value[1]);
-      printf("right lr=%u\r\n", ADC_Value[2]);
-      printf("left ul=%u\r\n", ADC_Value[3]);
-      HAL_Delay(500);
+      for (uint8_t i = 0; i < 28; i++)
+      {
+        printf("send[%d]=%02x\r\n", i, tx_buff[i]);
+      }
+
+      NRF24L01_TxPacket(tx_buff);
+      HAL_Delay(200);
       // App_Remote_Stick_Scan();
       // App_Remote_KeyPress();
     }
