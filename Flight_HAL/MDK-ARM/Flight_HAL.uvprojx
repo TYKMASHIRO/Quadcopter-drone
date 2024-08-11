@@ -1073,6 +1073,11 @@
               <FileType>1</FileType>
               <FilePath>..\APP\App_Flight.c</FilePath>
             </File>
+            <File>
+              <FileName>App_Task.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\APP\App_Task.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

@@ -65,3 +65,39 @@ MCU：STM32F103C8T6
 | 互补解算             | 由于单一传感器获得角度都有缺点，那就综合上述二者             | 综合了上述两者的优点                                         | 会受振动影响，并且动态性能差，大角度变化反应慢     |
 | 四元数姿态解算       | 通过某个固定的算法得到角度                                   | 算法固定，数学理论 成熟，解算准确，计 算量小，效果直逼卡 尔曼 | 会受振动影响，角度回复有延迟。算法不容易理解       |
 | 卡尔曼姿态评估       | 所谓评估就是综合某些因素，去估计姿态，就如同一部车驶来，你会根据它的速度评估下一秒的位置。 | 动态性能好                                                   | 模型复杂，计算量大， 理论复杂。参数 难调           |
+
+## 1.5 PID控制算法
+
+​			P：比例   回复力（修正 误差）
+
+​			I：积分	累计和  （修正 静态误差）
+
+​			D：微分  变化率 （阻力）
+
+```markdown
+PID = p*偏差 + I*偏差的积分 + D*偏差的变化率 //偏差 = （实际值 - 期望值）
+/**** PID控制器
+* @param p  比例系数
+* @param i  积分系数
+* @param d  微分系数
+* @param setPoint  设定值
+* @param feedback  实际值
+* @return 控制量
+*/
+float PID(float p,float i,float d,float setPoint,float feedback)
+{
+    static float errLast = 0; //上一次的偏差
+    static float integral = 0; //积分和
+    float err = setPoint - feedback; //当前偏差
+    integral += err; //累计偏差
+    float dErr = err - errLast; //偏差变化率
+    errLast = err; //更新偏差
+    return p*err + i*integral + d*dErr; //返回控制量
+}
+```
+
+```
+
+```
+
+![](./image.png)

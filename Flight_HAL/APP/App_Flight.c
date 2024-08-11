@@ -409,3 +409,154 @@ void App_Flight_RC_Analysis()
         }
     }
 }
+void App_Flight_PID_Control(float dt)
+{
+    static uint8_t status = WAITING_1;
+
+    switch (status)
+    {
+    case WAITING_1: /* 1、阶段一：根据标志位 判断是否解锁，则进入阶段2 */
+        /* code */
+        if (unlock_flag == 1)
+        {
+            status = WAITING_2;
+        }
+        break;
+    case WAITING_2: /* 2、阶段二：复位PID，进入正式阶段 */
+        /* code */
+        ResetPID(pids, 6);
+        status = PROCESS;
+        break;
+    case PROCESS: /* 3、正式阶段： PID计算 */
+        /* 赋值角度的测量值 */
+        pidPitch.measured = Angle.pitch;
+        pidRoll.measured = Angle.roll;
+        pidYaw.measured = Angle.yaw;
+        /* 赋值角速度的测量值 */
+        pidRateX.measured = MPU6050.gyroX * Gyro_G;
+        pidRateY.measured = MPU6050.gyroY * Gyro_G;
+        pidRateZ.measured = MPU6050.gyroZ * Gyro_G;
+        /*
+            俯仰角 ---》 Y轴角速度
+            横滚角 ---》 X轴角速度
+            偏航角 ---》 Z轴角速度
+         */
+        CasecadePID(&pidPitch, &pidRateY, dt);
+        CasecadePID(&pidRoll, &pidRateX, dt);
+        CasecadePID(&pidYaw, &pidRateZ, dt);
+
+        break;
+
+    default:
+        break;
+    }
+}
+
+/**
+ * @description: 电机控制
+ * @return {*}
+ */
+void App_Flight_Motor_Control()
+{
+
+    static uint8_t status = WAITING_1;
+
+    switch (status)
+    {
+    case WAITING_1: /* 阶段一：pwm=0，判断解锁标志位 */
+        /* 为了安全，初始强制为0 */
+        motor1 = motor2 = motor3 = motor4 = 0;
+        if (unlock_flag == 1)        
+        {
+            status = WAITING_2;
+        }
+        break;
+    case WAITING_2: /* 阶段二：判断油门动了 > 1100,进入正式控制 */
+        if (remote.THR > 1100)
+        {
+            status = PROCESS;
+        }
+
+        break;
+    case PROCESS: /* 正式控制: 摇杆-1000，如果油门<1050 pwm=0 ，限制到900， + 3个PID值 */
+        int16_t thr_temp;
+        /* 1、 油门值转成pwm的范围值 油门值 - 1000 */
+        thr_temp = remote.THR - 1000;
+        /* 2、 安全考虑，如果油门低，直接不转了 */
+        if (remote.THR < 1020)
+        {
+            motor1 = motor2 = motor3 = motor4 = 0;
+            break;
+        }
+        /* 3、 预留100给PID控制 */
+        motor1 = motor2 = motor3 = motor4 = LIMIT(thr_temp, 0, 900);
+
+        /* 4、加上3个PID的值 */
+        motor1 += +pidRateX.out + pidRateY.out + pidRateZ.out; // 右后
+        motor2 += +pidRateX.out - pidRateY.out - pidRateZ.out; // 右前
+        motor3 += -pidRateX.out - pidRateY.out + pidRateZ.out; // 左前
+        motor4 += -pidRateX.out + pidRateY.out - pidRateZ.out; // 左后
+        break;
+
+    default:
+        break;
+    }
+
+    // printf("motor1=%d,motor2=%d,motor3=%d,motor4=%d\r\n",motor1,motor2,motor3,motor4);
+    /* 设置pwm */
+    __HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_1, LIMIT(motor3, 0, 1000)); // 左前
+    __HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_2, LIMIT(motor2, 0, 1000)); // 右前
+    __HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_4, LIMIT(motor4, 0, 1000)); // 左后
+    __HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_3, LIMIT(motor1, 0, 1000)); // 右后
+}
+
+/**
+ * @description: 摇杆控制飞机前进后退、左右移动
+ * @return {*}
+ */
+void App_Flight_Mode_Control(void)
+{
+    const float roll_pitch_ratio = 0.04f;
+    /* PID计算会让飞机保持平衡，要让飞机移动需要让角度环的期望值非零 */
+    pidPitch.desired = -(remote.PIT - 1500) * roll_pitch_ratio; // 摇杆控制
+    pidRoll.desired = -(remote.ROL - 1500) * roll_pitch_ratio;  // 摇杆控制
+    Angle.yaw = pidYaw.desired = pidYaw.measured = 0;           // 锁定偏航角
+}
+
+/**
+ * @description: 初始化PID系数
+ * @return {*}
+ */
+void App_PID_Param_Init()
+{
+    /* 内环 */
+    /*
+        俯仰角： 内环 Y轴角速度
+        横滚角： 内环 X轴角速度
+        偏航角： 内环 Z轴角速度
+     */
+    pidRateX.kp = -3.0f; // -3.0
+    pidRateY.kp = 2.0f;  // 2.0
+    pidRateZ.kp = -2.0f; // -2.0
+
+    pidRateX.ki = 0.0f;
+    pidRateY.ki = 0.0f;
+    pidRateZ.ki = 0.0f;
+
+    pidRateX.kd = -0.08f; //-0.08
+    pidRateY.kd = 0.08f;  // 0.08
+    pidRateZ.kd = 0.00f;
+
+    /* 外环 */
+    pidPitch.kp = 7.0f; // 7.0
+    pidRoll.kp = 7.0f;  //
+    pidYaw.kp = -2.0f;
+
+    pidPitch.ki = 0.0f;
+    pidRoll.ki = 0.0f;
+    pidYaw.ki = 0.0f;
+
+    pidPitch.kd = 0.0f;
+    pidRoll.kd = 0.0f;
+    pidYaw.kd = 0.0f;
+}

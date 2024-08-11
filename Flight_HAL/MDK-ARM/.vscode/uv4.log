@@ -1,3 +1,10 @@
-Load "Flight_HAL\\Flight_HAL.axf" 
-Erase Done.Programming Done.Verify OK.Application running ...
-Flash Load finished at 23:35:51
+*** Using Compiler 'V5.06 update 5 (build 528)', folder: 'D:\works\Keil5\ARM\ARMCC\Bin'
+Build target 'Flight_HAL'
+linking...
+Flight_HAL\Flight_HAL.axf: Error: L6218E: Undefined symbol App_Flight_PilotLED (referred from app_task.o).
+Not enough information to list image symbols.
+Not enough information to list load addresses in the image map.
+Finished: 2 information, 0 warning and 1 error messages.
+"Flight_HAL\Flight_HAL.axf" - 1 Error(s), 0 Warning(s).
+Target not created.
+Build Time Elapsed:  00:00:00

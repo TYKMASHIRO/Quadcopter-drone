@@ -1,6 +1,6 @@
 Dependencies for Project 'Flight_HAL', Target 'Flight_HAL': (DO NOT MODIFY !)
 F (startup_stm32f103xb.s)(0x66B4BA89)(--cpu Cortex-M3 -g --apcs=interwork --pd "__MICROLIB SETA 1"-I.\RTE\_Flight_HAL-ID:\works\Keil5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-ID:\works\Keil5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include--pd "__UVISION_VERSION SETA 524" --pd "_RTE_ SETA 1" --pd "STM32F10X_MD SETA 1"--list startup_stm32f103xb.lst --xref -o flight_hal\startup_stm32f103xb.o --depend flight_hal\startup_stm32f103xb.d)
-F (../Core/Src/main.c)(0x66B6D176)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Mid/FreeRTOS -I ../Mid/FreeRTOS/include -I ../Mid/FreeRTOS/portable/RVDS/ARM_CM3 -I ../Int -I ../APP -I ../Com -I ../Lib/inc -I ../HARDWARE-I.\RTE\_Flight_HAL-ID:\works\Keil5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-ID:\works\Keil5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F10X_MD -DUSE_HAL_DRIVER -DSTM32F103xB-o flight_hal\main.o --omf_browse flight_hal\main.crf --depend flight_hal\main.d)
+F (../Core/Src/main.c)(0x66B8B086)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Mid/FreeRTOS -I ../Mid/FreeRTOS/include -I ../Mid/FreeRTOS/portable/RVDS/ARM_CM3 -I ../Int -I ../APP -I ../Com -I ../Lib/inc -I ../HARDWARE-I.\RTE\_Flight_HAL-ID:\works\Keil5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-ID:\works\Keil5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F10X_MD -DUSE_HAL_DRIVER -DSTM32F103xB-o flight_hal\main.o --omf_browse flight_hal\main.crf --depend flight_hal\main.d)
 I (../Core/Inc/main.h)(0x66B430A9)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x6690EF60)
 I (../Core/Inc/stm32f1xx_hal_conf.h)(0x66B17E85)
@@ -1098,7 +1098,7 @@ I (../Mid/FreeRTOS/portable/RVDS/ARM_CM3/portmacro.h)(0x66B17E86)
 I (../Mid/FreeRTOS/include/mpu_wrappers.h)(0x66B17E86)
 I (../Mid/FreeRTOS/include/task.h)(0x66B17E86)
 I (../Mid/FreeRTOS/include/list.h)(0x66B17E86)
-F (..\APP\App_Flight.c)(0x66B788CB)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Mid/FreeRTOS -I ../Mid/FreeRTOS/include -I ../Mid/FreeRTOS/portable/RVDS/ARM_CM3 -I ../Int -I ../APP -I ../Com -I ../Lib/inc -I ../HARDWARE-I.\RTE\_Flight_HAL-ID:\works\Keil5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-ID:\works\Keil5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F10X_MD -DUSE_HAL_DRIVER -DSTM32F103xB-o flight_hal\app_flight.o --omf_browse flight_hal\app_flight.crf --depend flight_hal\app_flight.d)
+F (..\APP\App_Flight.c)(0x66B835B1)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Mid/FreeRTOS -I ../Mid/FreeRTOS/include -I ../Mid/FreeRTOS/portable/RVDS/ARM_CM3 -I ../Int -I ../APP -I ../Com -I ../Lib/inc -I ../HARDWARE-I.\RTE\_Flight_HAL-ID:\works\Keil5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-ID:\works\Keil5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F10X_MD -DUSE_HAL_DRIVER -DSTM32F103xB-o flight_hal\app_flight.o --omf_browse flight_hal\app_flight.crf --depend flight_hal\app_flight.d)
 I (..\APP\App_Flight.h)(0x66B17E85)
 I (../Core/Inc/main.h)(0x66B430A9)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x6690EF60)
@@ -1142,6 +1142,61 @@ I (../Core/Inc/tim.h)(0x66B17E85)
 I (../HARDWARE/NRF24L01.h)(0x66B430EF)
 I (../Core/Inc/spi.h)(0x66B4BA87)
 I (D:\works\Keil5\ARM\ARMCC\include\stdio.h)(0x588B8344)
+F (..\APP\App_Task.c)(0x6618D16C)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Mid/FreeRTOS -I ../Mid/FreeRTOS/include -I ../Mid/FreeRTOS/portable/RVDS/ARM_CM3 -I ../Int -I ../APP -I ../Com -I ../Lib/inc -I ../HARDWARE-I.\RTE\_Flight_HAL-ID:\works\Keil5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-ID:\works\Keil5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F10X_MD -DUSE_HAL_DRIVER -DSTM32F103xB-o flight_hal\app_task.o --omf_browse flight_hal\app_task.crf --depend flight_hal\app_task.d)
+I (..\APP\App_Task.h)(0x66012FB0)
+I (../Mid/FreeRTOS/include/FreeRTOS.h)(0x66B17E86)
+I (D:\works\Keil5\ARM\ARMCC\include\stddef.h)(0x588B8344)
+I (D:\works\Keil5\ARM\ARMCC\include\stdint.h)(0x588B8344)
+I (../Mid/FreeRTOS/FreeRTOSConfig.h)(0x66B17E86)
+I (../Mid/FreeRTOS/include/projdefs.h)(0x66B17E86)
+I (../Mid/FreeRTOS/include/portable.h)(0x66B17E86)
+I (../Mid/FreeRTOS/include/deprecated_definitions.h)(0x66B17E86)
+I (../Mid/FreeRTOS/portable/RVDS/ARM_CM3/portmacro.h)(0x66B17E86)
+I (../Mid/FreeRTOS/include/mpu_wrappers.h)(0x66B17E86)
+I (../Mid/FreeRTOS/include/task.h)(0x66B17E86)
+I (../Mid/FreeRTOS/include/list.h)(0x66B17E86)
+I (..\APP\App_Flight.h)(0x66B17E85)
+I (../Core/Inc/main.h)(0x66B430A9)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x6690EF60)
+I (../Core/Inc/stm32f1xx_hal_conf.h)(0x66B17E85)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x6690EF60)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h)(0x6690EF60)
+I (../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h)(0x6690EF60)
+I (../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h)(0x6690EF60)
+I (../Drivers/CMSIS/Include/core_cm3.h)(0x6690EF5A)
+I (../Drivers/CMSIS/Include/cmsis_version.h)(0x6690EF5A)
+I (../Drivers/CMSIS/Include/cmsis_compiler.h)(0x6690EF5A)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x6690EF5A)
+I (../Drivers/CMSIS/Device/ST/STM32F1xx/Include/system_stm32f1xx.h)(0x6690EF60)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h)(0x6690EF60)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc_ex.h)(0x6690EF60)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h)(0x6690EF60)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio_ex.h)(0x6690EF60)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_exti.h)(0x6690EF60)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h)(0x6690EF60)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma_ex.h)(0x6690EF60)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_cortex.h)(0x6690EF60)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_adc.h)(0x6690EF60)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_adc_ex.h)(0x6690EF60)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash.h)(0x6690EF60)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h)(0x6690EF60)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_i2c.h)(0x6690EF60)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h)(0x6690EF60)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x6690EF60)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h)(0x6690EF60)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h)(0x6690EF60)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x6690EF60)
+I (../HARDWARE/LED.h)(0x66B17E85)
+I (../Core/Inc/GPIO.H)(0x66B17E85)
+I (../HARDWARE/Int_MPU6050.h)(0x66B17E85)
+I (../Core/Inc/i2c.h)(0x66B17E85)
+I (../Com/Com_Kalman.h)(0x66B17E85)
+I (../Com/Com_PID.h)(0x66B17E85)
+I (../Core/Inc/tim.h)(0x66B17E85)
+I (../HARDWARE/NRF24L01.h)(0x66B430EF)
+I (../Core/Inc/spi.h)(0x66B4BA87)
+I (D:\works\Keil5\ARM\ARMCC\include\stdio.h)(0x588B8344)
+I (../Com/Com_IMU.h)(0x66B17E85)
 F (..\Com\Com_IMU.c)(0x66B17E85)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../Mid/FreeRTOS -I ../Mid/FreeRTOS/include -I ../Mid/FreeRTOS/portable/RVDS/ARM_CM3 -I ../Int -I ../APP -I ../Com -I ../Lib/inc -I ../HARDWARE-I.\RTE\_Flight_HAL-ID:\works\Keil5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-ID:\works\Keil5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F10X_MD -DUSE_HAL_DRIVER -DSTM32F103xB-o flight_hal\com_imu.o --omf_browse flight_hal\com_imu.crf --depend flight_hal\com_imu.d)
 I (..\Com\Com_IMU.h)(0x66B17E85)
 I (../Core/Inc/main.h)(0x66B430A9)

@@ -121,9 +121,9 @@ int main(void)
   /**
    * 测试pwm，占空比50%
    */
-  // __HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_3, 499); // 右后
+  // __HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_1, 499); // 右后
   // __HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_2, 499); // 右前
-  // __HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_1, 499); // 左前
+  // __HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_3, 499); // 左前
   // __HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_4, 499); // 左后
   /**
    *  test ADC
@@ -137,6 +137,9 @@ int main(void)
   printf("remote check ok！！！！！...\r\n");
   // 初始化为发送模式
   NRF24L01_RX_Mode();
+  /*初始化内外环的pid参数*/
+  App_PID_Param_Init();
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -170,7 +173,6 @@ int main(void)
      *        自检2.4G
      */
     NRF24L01_RxPacket(rx_buff);
-    
 
     App_Flight_Remote_Check(rx_buff, 28);
     HAL_Delay(120);
