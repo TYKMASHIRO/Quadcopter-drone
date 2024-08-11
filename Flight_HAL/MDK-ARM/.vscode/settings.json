@@ -19,6 +19,9 @@
         "spi.h": "c",
         "nrf24l01.h": "c",
         "stdio.h": "c",
-        "com_pid.h": "c"
+        "com_pid.h": "c",
+        "app_task.h": "c",
+        "freertos.h": "c",
+        "task.h": "c"
     }
 }

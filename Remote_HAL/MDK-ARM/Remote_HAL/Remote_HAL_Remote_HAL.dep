@@ -37,7 +37,7 @@ I (../Core/Inc/usart.h)(0x66B17E86)
 I (D:\works\Keil5\ARM\ARMCC\include\stdio.h)(0x588B8344)
 I (../Core/Inc/gpio.h)(0x66B17E86)
 I (../HARDWARE/NRF24L01.h)(0x66B1821A)
-I (../App/App_Remote.h)(0x66B17E86)
+I (../App/App_Remote.h)(0x66B78E7A)
 F (../Core/Src/gpio.c)(0x66B17E86)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../HARDWARE -I ../Mid/FreeRTOS -I ../Mid/FreeRTOS/include -I ../Mid/FreeRTOS/portable/RVDS/ARM_CM3 -I ../App-I.\RTE\_Remote_HAL-ID:\works\Keil5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-ID:\works\Keil5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F10X_MD -DUSE_HAL_DRIVER -DSTM32F103xB-o remote_hal\gpio.o --omf_browse remote_hal\gpio.crf --depend remote_hal\gpio.d)
 I (../Core/Inc/gpio.h)(0x66B17E86)
 I (../Core/Inc/main.h)(0x66B17E86)
@@ -194,7 +194,7 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h)(0x6690EF60)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x6690EF60)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x6690EF60)
 I (D:\works\Keil5\ARM\ARMCC\include\stdio.h)(0x588B8344)
-F (../Core/Src/stm32f1xx_it.c)(0x66B17E86)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../HARDWARE -I ../Mid/FreeRTOS -I ../Mid/FreeRTOS/include -I ../Mid/FreeRTOS/portable/RVDS/ARM_CM3 -I ../App-I.\RTE\_Remote_HAL-ID:\works\Keil5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-ID:\works\Keil5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F10X_MD -DUSE_HAL_DRIVER -DSTM32F103xB-o remote_hal\stm32f1xx_it.o --omf_browse remote_hal\stm32f1xx_it.crf --depend remote_hal\stm32f1xx_it.d)
+F (../Core/Src/stm32f1xx_it.c)(0x66B8D050)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../HARDWARE -I ../Mid/FreeRTOS -I ../Mid/FreeRTOS/include -I ../Mid/FreeRTOS/portable/RVDS/ARM_CM3 -I ../App-I.\RTE\_Remote_HAL-ID:\works\Keil5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-ID:\works\Keil5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F10X_MD -DUSE_HAL_DRIVER -DSTM32F103xB-o remote_hal\stm32f1xx_it.o --omf_browse remote_hal\stm32f1xx_it.crf --depend remote_hal\stm32f1xx_it.d)
 I (../Core/Inc/main.h)(0x66B17E86)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x6690EF60)
 I (../Core/Inc/stm32f1xx_hal_conf.h)(0x66B17E86)
@@ -226,7 +226,7 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x6690EF60)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x6690EF60)
 I (../Core/Inc/stm32f1xx_it.h)(0x66B17E86)
 I (../Mid/FreeRTOS/include/FreeRTOS.h)(0x66B17E86)
-I (../Mid/FreeRTOS/FreeRTOSConfig.h)(0x66B17E86)
+I (../Mid/FreeRTOS/FreeRTOSConfig.h)(0x66B8D035)
 I (../Mid/FreeRTOS/include/projdefs.h)(0x66B17E86)
 I (../Mid/FreeRTOS/include/portable.h)(0x66B17E86)
 I (../Mid/FreeRTOS/include/deprecated_definitions.h)(0x66B17E86)
@@ -819,12 +819,12 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x6690EF60)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x6690EF60)
 I (../Core/Inc/spi.h)(0x66B17E86)
 I (D:\works\Keil5\ARM\ARMCC\include\stdio.h)(0x588B8344)
-F (..\Mid\FreeRTOS\FreeRTOSConfig.h)(0x66B17E86)()
+F (..\Mid\FreeRTOS\FreeRTOSConfig.h)(0x66B8D035)()
 F (..\Mid\FreeRTOS\source\croutine.c)(0x66B17E86)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../HARDWARE -I ../Mid/FreeRTOS -I ../Mid/FreeRTOS/include -I ../Mid/FreeRTOS/portable/RVDS/ARM_CM3 -I ../App-I.\RTE\_Remote_HAL-ID:\works\Keil5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-ID:\works\Keil5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F10X_MD -DUSE_HAL_DRIVER -DSTM32F103xB-o remote_hal\croutine.o --omf_browse remote_hal\croutine.crf --depend remote_hal\croutine.d)
 I (../Mid/FreeRTOS/include/FreeRTOS.h)(0x66B17E86)
 I (D:\works\Keil5\ARM\ARMCC\include\stddef.h)(0x588B8344)
 I (D:\works\Keil5\ARM\ARMCC\include\stdint.h)(0x588B8344)
-I (../Mid/FreeRTOS/FreeRTOSConfig.h)(0x66B17E86)
+I (../Mid/FreeRTOS/FreeRTOSConfig.h)(0x66B8D035)
 I (../Mid/FreeRTOS/include/projdefs.h)(0x66B17E86)
 I (../Mid/FreeRTOS/include/portable.h)(0x66B17E86)
 I (../Mid/FreeRTOS/include/deprecated_definitions.h)(0x66B17E86)
@@ -838,7 +838,7 @@ I (D:\works\Keil5\ARM\ARMCC\include\stdlib.h)(0x588B8344)
 I (../Mid/FreeRTOS/include/FreeRTOS.h)(0x66B17E86)
 I (D:\works\Keil5\ARM\ARMCC\include\stddef.h)(0x588B8344)
 I (D:\works\Keil5\ARM\ARMCC\include\stdint.h)(0x588B8344)
-I (../Mid/FreeRTOS/FreeRTOSConfig.h)(0x66B17E86)
+I (../Mid/FreeRTOS/FreeRTOSConfig.h)(0x66B8D035)
 I (../Mid/FreeRTOS/include/projdefs.h)(0x66B17E86)
 I (../Mid/FreeRTOS/include/portable.h)(0x66B17E86)
 I (../Mid/FreeRTOS/include/deprecated_definitions.h)(0x66B17E86)
@@ -853,7 +853,7 @@ I (D:\works\Keil5\ARM\ARMCC\include\stdlib.h)(0x588B8344)
 I (../Mid/FreeRTOS/include/FreeRTOS.h)(0x66B17E86)
 I (D:\works\Keil5\ARM\ARMCC\include\stddef.h)(0x588B8344)
 I (D:\works\Keil5\ARM\ARMCC\include\stdint.h)(0x588B8344)
-I (../Mid/FreeRTOS/FreeRTOSConfig.h)(0x66B17E86)
+I (../Mid/FreeRTOS/FreeRTOSConfig.h)(0x66B8D035)
 I (../Mid/FreeRTOS/include/projdefs.h)(0x66B17E86)
 I (../Mid/FreeRTOS/include/portable.h)(0x66B17E86)
 I (../Mid/FreeRTOS/include/deprecated_definitions.h)(0x66B17E86)
@@ -866,7 +866,7 @@ I (D:\works\Keil5\ARM\ARMCC\include\string.h)(0x588B8344)
 I (../Mid/FreeRTOS/include/FreeRTOS.h)(0x66B17E86)
 I (D:\works\Keil5\ARM\ARMCC\include\stddef.h)(0x588B8344)
 I (D:\works\Keil5\ARM\ARMCC\include\stdint.h)(0x588B8344)
-I (../Mid/FreeRTOS/FreeRTOSConfig.h)(0x66B17E86)
+I (../Mid/FreeRTOS/FreeRTOSConfig.h)(0x66B8D035)
 I (../Mid/FreeRTOS/include/projdefs.h)(0x66B17E86)
 I (../Mid/FreeRTOS/include/portable.h)(0x66B17E86)
 I (../Mid/FreeRTOS/include/deprecated_definitions.h)(0x66B17E86)
@@ -880,7 +880,7 @@ I (D:\works\Keil5\ARM\ARMCC\include\stdint.h)(0x588B8344)
 I (D:\works\Keil5\ARM\ARMCC\include\string.h)(0x588B8344)
 I (../Mid/FreeRTOS/include/FreeRTOS.h)(0x66B17E86)
 I (D:\works\Keil5\ARM\ARMCC\include\stddef.h)(0x588B8344)
-I (../Mid/FreeRTOS/FreeRTOSConfig.h)(0x66B17E86)
+I (../Mid/FreeRTOS/FreeRTOSConfig.h)(0x66B8D035)
 I (../Mid/FreeRTOS/include/projdefs.h)(0x66B17E86)
 I (../Mid/FreeRTOS/include/portable.h)(0x66B17E86)
 I (../Mid/FreeRTOS/include/deprecated_definitions.h)(0x66B17E86)
@@ -895,7 +895,7 @@ I (D:\works\Keil5\ARM\ARMCC\include\string.h)(0x588B8344)
 I (../Mid/FreeRTOS/include/FreeRTOS.h)(0x66B17E86)
 I (D:\works\Keil5\ARM\ARMCC\include\stddef.h)(0x588B8344)
 I (D:\works\Keil5\ARM\ARMCC\include\stdint.h)(0x588B8344)
-I (../Mid/FreeRTOS/FreeRTOSConfig.h)(0x66B17E86)
+I (../Mid/FreeRTOS/FreeRTOSConfig.h)(0x66B8D035)
 I (../Mid/FreeRTOS/include/projdefs.h)(0x66B17E86)
 I (../Mid/FreeRTOS/include/portable.h)(0x66B17E86)
 I (../Mid/FreeRTOS/include/deprecated_definitions.h)(0x66B17E86)
@@ -910,7 +910,7 @@ I (D:\works\Keil5\ARM\ARMCC\include\stdlib.h)(0x588B8344)
 I (../Mid/FreeRTOS/include/FreeRTOS.h)(0x66B17E86)
 I (D:\works\Keil5\ARM\ARMCC\include\stddef.h)(0x588B8344)
 I (D:\works\Keil5\ARM\ARMCC\include\stdint.h)(0x588B8344)
-I (../Mid/FreeRTOS/FreeRTOSConfig.h)(0x66B17E86)
+I (../Mid/FreeRTOS/FreeRTOSConfig.h)(0x66B8D035)
 I (../Mid/FreeRTOS/include/projdefs.h)(0x66B17E86)
 I (../Mid/FreeRTOS/include/portable.h)(0x66B17E86)
 I (../Mid/FreeRTOS/include/deprecated_definitions.h)(0x66B17E86)
@@ -926,7 +926,7 @@ I (D:\works\Keil5\ARM\ARMCC\include\string.h)(0x588B8344)
 I (../Mid/FreeRTOS/include/FreeRTOS.h)(0x66B17E86)
 I (D:\works\Keil5\ARM\ARMCC\include\stddef.h)(0x588B8344)
 I (D:\works\Keil5\ARM\ARMCC\include\stdint.h)(0x588B8344)
-I (../Mid/FreeRTOS/FreeRTOSConfig.h)(0x66B17E86)
+I (../Mid/FreeRTOS/FreeRTOSConfig.h)(0x66B8D035)
 I (../Mid/FreeRTOS/include/projdefs.h)(0x66B17E86)
 I (../Mid/FreeRTOS/include/portable.h)(0x66B17E86)
 I (../Mid/FreeRTOS/include/deprecated_definitions.h)(0x66B17E86)
@@ -938,7 +938,7 @@ F (..\Mid\FreeRTOS\portable\RVDS\ARM_CM3\port.c)(0x66B17E86)(--c99 -c --cpu Cort
 I (../Mid/FreeRTOS/include/FreeRTOS.h)(0x66B17E86)
 I (D:\works\Keil5\ARM\ARMCC\include\stddef.h)(0x588B8344)
 I (D:\works\Keil5\ARM\ARMCC\include\stdint.h)(0x588B8344)
-I (../Mid/FreeRTOS/FreeRTOSConfig.h)(0x66B17E86)
+I (../Mid/FreeRTOS/FreeRTOSConfig.h)(0x66B8D035)
 I (../Mid/FreeRTOS/include/projdefs.h)(0x66B17E86)
 I (../Mid/FreeRTOS/include/portable.h)(0x66B17E86)
 I (../Mid/FreeRTOS/include/deprecated_definitions.h)(0x66B17E86)
@@ -947,7 +947,7 @@ I (../Mid/FreeRTOS/include/mpu_wrappers.h)(0x66B17E86)
 I (../Mid/FreeRTOS/include/task.h)(0x66B17E86)
 I (../Mid/FreeRTOS/include/list.h)(0x66B17E86)
 F (..\App\App_Remote.c)(0x66B78C09)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../HARDWARE -I ../Mid/FreeRTOS -I ../Mid/FreeRTOS/include -I ../Mid/FreeRTOS/portable/RVDS/ARM_CM3 -I ../App-I.\RTE\_Remote_HAL-ID:\works\Keil5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-ID:\works\Keil5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F10X_MD -DUSE_HAL_DRIVER -DSTM32F103xB-o remote_hal\app_remote.o --omf_browse remote_hal\app_remote.crf --depend remote_hal\app_remote.d)
-I (..\App\App_Remote.h)(0x66B17E86)
+I (..\App\App_Remote.h)(0x66B78E7A)
 I (../Core/Inc/main.h)(0x66B17E86)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x6690EF60)
 I (../Core/Inc/stm32f1xx_hal_conf.h)(0x66B17E86)
@@ -978,3 +978,48 @@ I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h)(0x6690EF60)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x6690EF60)
 I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x6690EF60)
 I (../Core/Inc/gpio.h)(0x66B17E86)
+F (..\App\App_Task.c)(0x66B8D275)(--c99 -c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ../Core/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc -I ../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I ../Drivers/CMSIS/Include -I ../HARDWARE -I ../Mid/FreeRTOS -I ../Mid/FreeRTOS/include -I ../Mid/FreeRTOS/portable/RVDS/ARM_CM3 -I ../App-I.\RTE\_Remote_HAL-ID:\works\Keil5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-ID:\works\Keil5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include-D__UVISION_VERSION="524" -D_RTE_ -DSTM32F10X_MD -DUSE_HAL_DRIVER -DSTM32F103xB-o remote_hal\app_task.o --omf_browse remote_hal\app_task.crf --depend remote_hal\app_task.d)
+I (..\App\App_Task.h)(0x66012FB0)
+I (../Mid/FreeRTOS/include/FreeRTOS.h)(0x66B17E86)
+I (D:\works\Keil5\ARM\ARMCC\include\stddef.h)(0x588B8344)
+I (D:\works\Keil5\ARM\ARMCC\include\stdint.h)(0x588B8344)
+I (../Mid/FreeRTOS/FreeRTOSConfig.h)(0x66B8D035)
+I (../Mid/FreeRTOS/include/projdefs.h)(0x66B17E86)
+I (../Mid/FreeRTOS/include/portable.h)(0x66B17E86)
+I (../Mid/FreeRTOS/include/deprecated_definitions.h)(0x66B17E86)
+I (../Mid/FreeRTOS/portable/RVDS/ARM_CM3/portmacro.h)(0x66B17E86)
+I (../Mid/FreeRTOS/include/mpu_wrappers.h)(0x66B17E86)
+I (../Mid/FreeRTOS/include/task.h)(0x66B17E86)
+I (../Mid/FreeRTOS/include/list.h)(0x66B17E86)
+I (..\App\App_Remote.h)(0x66B78E7A)
+I (../Core/Inc/main.h)(0x66B17E86)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h)(0x6690EF60)
+I (../Core/Inc/stm32f1xx_hal_conf.h)(0x66B17E86)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h)(0x6690EF60)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h)(0x6690EF60)
+I (../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h)(0x6690EF60)
+I (../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h)(0x6690EF60)
+I (../Drivers/CMSIS/Include/core_cm3.h)(0x6690EF5A)
+I (../Drivers/CMSIS/Include/cmsis_version.h)(0x6690EF5A)
+I (../Drivers/CMSIS/Include/cmsis_compiler.h)(0x6690EF5A)
+I (../Drivers/CMSIS/Include/cmsis_armcc.h)(0x6690EF5A)
+I (../Drivers/CMSIS/Device/ST/STM32F1xx/Include/system_stm32f1xx.h)(0x6690EF60)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h)(0x6690EF60)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc_ex.h)(0x6690EF60)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio.h)(0x6690EF60)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_gpio_ex.h)(0x6690EF60)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_exti.h)(0x6690EF60)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma.h)(0x6690EF60)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma_ex.h)(0x6690EF60)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_cortex.h)(0x6690EF60)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_adc.h)(0x6690EF60)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_adc_ex.h)(0x6690EF60)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash.h)(0x6690EF60)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h)(0x6690EF60)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h)(0x6690EF60)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h)(0x6690EF60)
+I (../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h)(0x6690EF60)
+I (../Core/Inc/gpio.h)(0x66B17E86)
+I (../HARDWARE/NRF24L01.h)(0x66B1821A)
+I (../Core/Inc/spi.h)(0x66B17E86)
+I (D:\works\Keil5\ARM\ARMCC\include\stdio.h)(0x588B8344)

@@ -815,6 +815,11 @@
               <FileType>1</FileType>
               <FilePath>..\App\App_Remote.c</FilePath>
             </File>
+            <File>
+              <FileName>App_Task.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\App\App_Task.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
