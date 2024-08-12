@@ -22,7 +22,7 @@ Dialog DLL:      TCM.DLL V1.32.0.0
  
 <h2>Project:</h2>
 c:\Users\19062\Desktop\Quadcopter\Remote_HAL\MDK-ARM\Remote_HAL.uvprojx
-Project File Date:  08/11/2024
+Project File Date:  08/12/2024
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 5 (build 528)', folder: 'D:\works\Keil5\ARM\ARMCC\Bin'
@@ -34,11 +34,13 @@ compiling App_Task.c...
   void App_Remote_KeyPress();
 ../HARDWARE/NRF24L01.h(85): warning:  #1295-D: Deprecated declaration NRF24L01_Check - give arg types
   uint8_t NRF24L01_Check();
-..\App\App_Task.c: 3 warnings, 0 errors
+..\App\App_Task.c(154): warning:  #223-D: function "oled_show" declared implicitly
+          oled_show();
+..\App\App_Task.c: 4 warnings, 0 errors
 linking...
-Program Size: Code=13260 RO-data=312 RW-data=136 ZI-data=2160  
+Program Size: Code=18540 RO-data=3764 RW-data=184 ZI-data=18600  
 FromELF: creating hex file...
-"Remote_HAL\Remote_HAL.axf" - 0 Error(s), 3 Warning(s).
+"Remote_HAL\Remote_HAL.axf" - 0 Error(s), 4 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -61,7 +63,7 @@ Package Vendor: Keil
 <h2>Collection of Component Files used:</h2>
 
    * Component: ARM::CMSIS:CORE:5.0.1
-Build Time Elapsed:  00:00:01
+Build Time Elapsed:  00:00:02
 </pre>
 </body>
 </html>

@@ -100,4 +100,8 @@ float PID(float p,float i,float d,float setPoint,float feedback)
 
 ```
 
-![](./image.png)
+![](./算法导论图/image.png)
+
+## 1.6周期控制
+
+使用FreeRTOS控制的周期中，发送的周期一定要大于接收的周期

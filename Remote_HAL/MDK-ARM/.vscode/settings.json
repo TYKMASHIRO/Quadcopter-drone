@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "app_remote.h": "c",
-        "nrf24l01.h": "c"
+        "nrf24l01.h": "c",
+        "oled.h": "c"
     }
 }

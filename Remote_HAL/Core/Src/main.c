@@ -28,6 +28,8 @@
 /* USER CODE BEGIN Includes */
 #include "NRF24L01.h"
 #include "App_Remote.h"
+#include "oled.h"
+#include "App_Task.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -111,7 +113,10 @@ int main(void)
   printf("remote check ok...\r\n");
   // 初始化为发送模式
   NRF24L01_TX_Mode();
-
+  /*oled 初始化*/
+  OLED_Init();
+  /* 进入FreeRTOS */
+  FreeRTOS_Start();
   /* USER CODE END 2 */
 
   /* Infinite loop */

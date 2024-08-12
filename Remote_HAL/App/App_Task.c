@@ -151,7 +151,7 @@ void App_Task_20MS(void *pvParameters)
         /* 无关紧要的灯控系统任务，周期随意 */
         App_Remote_KeyPress();
         /* OLED显示 */
-        // oled_show();
+        oled_show();
         vTaskDelayUntil(&pxPreviousWakeTime, 20);
     }
 }

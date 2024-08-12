@@ -740,6 +740,21 @@
               <FileType>1</FileType>
               <FilePath>..\HARDWARE\NRF24L01.c</FilePath>
             </File>
+            <File>
+              <FileName>oled.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\oled.c</FilePath>
+            </File>
+            <File>
+              <FileName>oledfont.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\oledfont.c</FilePath>
+            </File>
+            <File>
+              <FileName>show.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\show.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
