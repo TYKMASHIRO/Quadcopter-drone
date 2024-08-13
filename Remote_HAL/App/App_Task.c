@@ -130,7 +130,7 @@ void App_Task_4MS(void *pvParameters)
         App_Remote_RemoteData(TX_BUFF);
         /* 通过2.4G发送遥控器数据，注意 周期 >= 接收的周期 */
         NRF24L01_TxPacket(TX_BUFF);
-        vTaskDelayUntil(&pxPreviousWakeTime, 8);
+        vTaskDelayUntil(&pxPreviousWakeTime, 16);
         // vTaskDelayUntil(&pxPreviousWakeTime, 4);
     }
 }

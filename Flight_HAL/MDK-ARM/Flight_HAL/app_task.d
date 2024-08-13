@@ -53,4 +53,3 @@ flight_hal\app_task.o: ../Core/Inc/tim.h
 flight_hal\app_task.o: ../HARDWARE/NRF24L01.h
 flight_hal\app_task.o: ../Core/Inc/spi.h
 flight_hal\app_task.o: D:\works\Keil5\ARM\ARMCC\Bin\..\include\stdio.h
-flight_hal\app_task.o: ../Com/Com_IMU.h
