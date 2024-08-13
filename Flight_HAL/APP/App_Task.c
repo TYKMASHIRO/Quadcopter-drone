@@ -18,7 +18,7 @@ void App_Task_2MS(void *pvParameters);
 
 /* 4ms周期任务 */
 #define TASK_4MS_STACK_DEPTH 256
-#define TASK_4MS_PRIORITY 3
+#define TASK_4MS_PRIORITY 5
 TaskHandle_t task_4ms_handle;
 void App_Task_4MS(void *pvParameters);
 
@@ -90,20 +90,20 @@ void App_Task_2MS(void *pvParameters)
     TickType_t pxPreviousWakeTime;
     pxPreviousWakeTime = xTaskGetTickCount();
 
-    while (1)
-    {
-        /* 获取MPU 6轴数据 */
-        App_Flight_MPU_Data();
-        /* 计算欧拉角，注意第二个参数=调用周期  1ms=0.001 */
-        GetAngle(&MPU6050, &Angle, 0.002f);
-        /* 摇杆控制移动 */
-        App_Flight_Mode_Control();
-        /* 三个串级PID计算，注意参数=调用周期 1ms=0.001 */
-        App_Flight_PID_Control(0.002f);
-        /* 电机控制 */
-        App_Flight_Motor_Control();
-        vTaskDelayUntil(&pxPreviousWakeTime, 2);
-    }
+    // while (1)
+    // {
+    /* 获取MPU 6轴数据 */
+    App_Flight_MPU_Data();
+    /* 计算欧拉角，注意第二个参数=调用周期  1ms=0.001 */
+    GetAngle(&MPU6050, &Angle, 0.002f);
+    /* 摇杆控制移动 */
+    App_Flight_Mode_Control();
+    /* 三个串级PID计算，注意参数=调用周期 1ms=0.001 */
+    App_Flight_PID_Control(0.002f);
+    /* 电机控制 */
+    App_Flight_Motor_Control();
+    vTaskDelayUntil(&pxPreviousWakeTime, 2);
+    // }
 }
 
 /**
@@ -120,6 +120,15 @@ void App_Task_4MS(void *pvParameters)
     while (1)
     {
         /* 2.4G接收数据，注意调用周期 <= 发送周期 */
+        App_Flight_MPU_Data();
+        /* 计算欧拉角，注意第二个参数=调用周期  1ms=0.001 */
+        GetAngle(&MPU6050, &Angle, 0.002f);
+        /* 摇杆控制移动 */
+        App_Flight_Mode_Control();
+        /* 三个串级PID计算，注意参数=调用周期 1ms=0.001 */
+        App_Flight_PID_Control(0.002f);
+        /* 电机控制 */
+        App_Flight_Motor_Control();
         NRF24L01_RxPacket(RX_BUFF);
         /* 解析遥控器的数据，进行校验 */
         App_Flight_Remote_Check(RX_BUFF, TX_PLOAD_WIDTH);
@@ -140,10 +149,10 @@ void App_Task_50MS(void *pvParameters)
     TickType_t pxPreviousWakeTime;
     pxPreviousWakeTime = xTaskGetTickCount();
 
-    while (1)
-    {
-        /* 无关紧要的灯控系统任务，周期随意 */
-        // App_Flight_PilotLED();
-        vTaskDelayUntil(&pxPreviousWakeTime, 50);
-    }
+    // while (1)
+    // {
+    //     /* 无关紧要的灯控系统任务，周期随意 */
+    //     // App_Flight_PilotLED();
+    //     vTaskDelayUntil(&pxPreviousWakeTime, 50);
+    // }
 }

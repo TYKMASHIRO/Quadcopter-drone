@@ -3,7 +3,7 @@
 <title>Static Call Graph - [Remote_HAL\Remote_HAL.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image Remote_HAL\Remote_HAL.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060528: Last Updated: Mon Aug 12 10:45:24 2024
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060528: Last Updated: Mon Aug 12 22:34:06 2024
 <BR><P>
 <H3>Maximum Stack Usage =        224 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -426,7 +426,7 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> app_task.o(i.Start_Task)
 </UL>
-<P><STRONG><a name="[3c]"></a>App_Task_4MS</STRONG> (Thumb, 52 bytes, Stack size 8 bytes, app_task.o(i.App_Task_4MS))
+<P><STRONG><a name="[3c]"></a>App_Task_4MS</STRONG> (Thumb, 40 bytes, Stack size 8 bytes, app_task.o(i.App_Task_4MS))
 <BR><BR>[Stack]<UL><LI>Max Depth = 184<LI>Call Chain = App_Task_4MS &rArr; NRF24L01_TxPacket &rArr; NRF24L01_Write_Buf &rArr; Driver_SPI_SwapByte &rArr; HAL_SPI_TransmitReceive &rArr; SPI_EndRxTxTransaction &rArr; SPI_WaitFlagStateUntilTimeout
 </UL>
 <BR>[Calls]<UL><LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;NRF24L01_TxPacket

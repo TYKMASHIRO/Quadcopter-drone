@@ -68,7 +68,7 @@ void App_Flight_MPU_Offsets();
 
 void App_Flight_Remote_Check(uint8_t *buf, uint8_t len);
 
-// void App_Flight_RC_Unlock();
+void App_Flight_RC_Unlock();
 
 void App_Flight_RC_Analysis();
 

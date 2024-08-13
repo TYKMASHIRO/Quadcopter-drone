@@ -358,7 +358,6 @@ void App_Flight_RC_Analysis()
     static uint16_t flag = 4;
     static uint16_t thr_count = 0;
     static uint16_t disconnect_count = 0;
-    
 
     if (connect_flag == 1)
     {
@@ -458,7 +457,7 @@ void App_Flight_PID_Control(float dt)
  */
 void App_Flight_Motor_Control()
 {
-
+    // App_Flight_RC_Unlock();
     static uint8_t status = WAITING_1;
 
     switch (status)
@@ -466,7 +465,7 @@ void App_Flight_Motor_Control()
     case WAITING_1: /* 阶段一：pwm=0，判断解锁标志位 */
         /* 为了安全，初始强制为0 */
         motor1 = motor2 = motor3 = motor4 = 0;
-        if (unlock_flag == 1)        
+        if (unlock_flag == 1)
         {
             status = WAITING_2;
         }
@@ -502,7 +501,7 @@ void App_Flight_Motor_Control()
         break;
     }
 
-    // printf("motor1=%d,motor2=%d,motor3=%d,motor4=%d\r\n",motor1,motor2,motor3,motor4);
+    printf("motor1=%d,motor2=%d,motor3=%d,motor4=%d\r\n",motor1,motor2,motor3,motor4);
     /* 设置pwm */
     __HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_1, LIMIT(motor3, 0, 1000)); // 左前
     __HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_2, LIMIT(motor2, 0, 1000)); // 右前

@@ -33,6 +33,7 @@
 #include "App_Flight.h"
 #include "Com_IMU.h"
 #include "NRF24L01.h"
+#include "App_Task.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -108,10 +109,10 @@ int main(void)
   Int_MPU6050_Init(); /*mpu6050初始�?*/
 
   // 启动pwm,当我们用寄存器初始化他不用开,而hal库却要开
-  // HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_1);
-  // HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_2);
-  // HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_3);
-  // HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_4);
+  HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_1);
+  HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_2);
+  HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_3);
+  HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_4);
   /**
    *  左前：HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1);
    *        右前：HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_2);
@@ -121,25 +122,29 @@ int main(void)
   /**
    * 测试pwm，占空比50%
    */
+  HAL_ADC_Start_DMA(&hadc1, (uint32_t *)ADC_Value, 10);
   // __HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_1, 499); // 右后
-  // __HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_2, 499); // 右前
-  // __HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_3, 499); // 左前
-  // __HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_4, 499); // 左后
+  // // __HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_2, 499); // 右前
+  // // __HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_3, 499); // 左前
+  // // __HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_4, 499); // 左后
+  // HAL_Delay(1000000);
   /**
    *  test ADC
    *
    */
-  HAL_ADC_Start_DMA(&hadc1, (uint32_t *)ADC_Value, 10);
+
   while (NRF24L01_Check())
   {
-    printf("NRF24L01 Check Failed!\r\n");
+    printf("NRF24L01 Check Failed\r\n");
   }
-  printf("remote check ok！！！！！...\r\n");
+  printf("remote check ok\r\n");
   // 初始化为发送模式
   NRF24L01_RX_Mode();
   /*初始化内外环的pid参数*/
   App_PID_Param_Init();
 
+  /*进入执行FreeRTOS调度*/
+  FreeRTOS_Start();
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -172,9 +177,10 @@ int main(void)
      * @brief Construct a new while object
      *        自检2.4G
      */
-    NRF24L01_RxPacket(rx_buff);
+    NRF24L01_RxPacket(RX_BUFF);
 
-    App_Flight_Remote_Check(rx_buff, 28);
+    App_Flight_Remote_Check(RX_BUFF, 28);
+    // App_Flight_RC_Unlock();
     HAL_Delay(120);
     // uint8_t rx_buff[28] = {0};
     // // while (NRF24L01_Check())
