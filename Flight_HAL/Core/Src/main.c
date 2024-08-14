@@ -124,9 +124,9 @@ int main(void)
    */
   HAL_ADC_Start_DMA(&hadc1, (uint32_t *)ADC_Value, 10);
   // __HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_1, 499); // 右后
-  // // __HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_2, 499); // 右前
-  // // __HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_3, 499); // 左前
-  // // __HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_4, 499); // 左后
+  // __HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_2, 499); // 右前
+  // __HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_3, 499); // 左前
+  // __HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_4, 499); // 左后
   // HAL_Delay(1000000);
   /**
    *  test ADC
@@ -142,6 +142,7 @@ int main(void)
   NRF24L01_RX_Mode();
   /*初始化内外环的pid参数*/
   App_PID_Param_Init();
+
 
   /*进入执行FreeRTOS调度*/
   FreeRTOS_Start();
