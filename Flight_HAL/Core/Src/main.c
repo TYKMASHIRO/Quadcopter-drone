@@ -76,6 +76,7 @@ void SystemClock_Config(void);
  */
 int main(void)
 {
+
   /* USER CODE BEGIN 1 */
 
   /* USER CODE END 1 */
@@ -122,6 +123,16 @@ int main(void)
   /**
    * 测试pwm，占空比50%
    */
+  /**
+   * 为什么这样做：
+     访问方式的变化：将 ADC_Value 从 16 位转换为 32 位指针，可能是为了以 32 位宽度读取或写入数据。由于 uint16_t 是 16 位的，而 uint32_t 是 32 位的，转换后可能会导致指针的解引用方式不同，从而影响程序如何访问数组中的数据。
+
+     内存效率：在某些场景中，通过 uint32_t * 访问 uint16_t 数组可能能提高效率，因为有些处理器能够更快地处理 32 位数据。
+   * Why do this:
+      Access changes: Converting ADC_Value from 16-bit to 32-bit pointer may be done to read or write data with a 32-bit width. Since uint16_t is 16-bit and uint32_t is 32-bit, the conversion may cause pointers to be dereferenced differently, which may affect how the program accesses data in the array.
+
+      Memory efficiency: In some scenarios, accessing uint16_t arrays through uint32_t * may be more efficient because some processors can process 32-bit data faster.
+  */
   HAL_ADC_Start_DMA(&hadc1, (uint32_t *)ADC_Value, 10);
   // __HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_1, 499); // 右后
   // __HAL_TIM_SetCompare(&htim2, TIM_CHANNEL_2, 499); // 右前
@@ -142,7 +153,6 @@ int main(void)
   NRF24L01_RX_Mode();
   /*初始化内外环的pid参数*/
   App_PID_Param_Init();
-
 
   /*进入执行FreeRTOS调度*/
   FreeRTOS_Start();
