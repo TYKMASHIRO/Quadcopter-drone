@@ -108,7 +108,7 @@ float PID(float p,float i,float d,float setPoint,float feedback)
 
 使用FreeRTOS控制的周期中，发送的周期一定要大于接收的周期
 
-2.0驱动层
+## 2.0驱动层
 
 （1）IIC：用于MPU6050
 
@@ -122,7 +122,7 @@ float PID(float p,float i,float d,float setPoint,float feedback)
 
 （6）GPIO：按键
 
-2.1硬件接口层有哪些硬件
+## 2.1硬件接口层有哪些硬件
 
 （1）MPU6050：获取三轴角速度、加速度
 
@@ -132,11 +132,15 @@ float PID(float p,float i,float d,float setPoint,float feedback)
 
 （4）摇杆、按键
 
-3.0应用层做了那些事情
+## 3.0应用层做了那些事情
+
+（串级PID）串级PID就是在原先的PID控制块的前面再接一个PID控制块，叫做外环，内外环串接起来就是大概下面这个样子。外环PID想要直接获取到当前的位移是比较困难的，所以做下面的处理来间接获取
+
+https://s2.51cto.com/images/blog/202108/09/2dce1b6169f640ad6a30596d6a0f48ef.jpeg?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_30,g_se,x_10,y_10,shadow_20,type_ZmFuZ3poZW5naGVpdGk=/format,webp![PID控制算法系列(2)-串级PID的理解与实现_内环_03](https://s2.51cto.com/images/blog/202108/09/2dce1b6169f640ad6a30596d6a0f48ef.jpeg?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_30,g_se,x_10,y_10,shadow_20,type_ZmFuZ3poZW5naGVpdGk=/format,webp/resize,m_fixed,w_1184)
 
 **1）*****\*姿态计算\****
 
-（1）MPU6050原始数据处理转换。
+（1）MPU6050原始数据处理转换（这里MPU直接读取到角速度的值，所以角速度是最快得到的，角速度反应高于加速度，所以选择反应快，受干扰小的角速度做内环）。
 
 （2）零偏校准。
 
