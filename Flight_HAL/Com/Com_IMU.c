@@ -61,7 +61,6 @@ void GetAngle(const _stMPU *pMpu, _stAngle *pAngE, float dt)
     Gravity.z = 1 - 2 * (NumQ.q1 * NumQ.q1 + NumQ.q2 * NumQ.q2);
     // 加速度归一化
     NormQuat = Q_rsqrt(squa(MPU6050.accX) + squa(MPU6050.accY) + squa(MPU6050.accZ));
-
     Acc.x = pMpu->accX * NormQuat;
     Acc.y = pMpu->accY * NormQuat;
     Acc.z = pMpu->accZ * NormQuat;

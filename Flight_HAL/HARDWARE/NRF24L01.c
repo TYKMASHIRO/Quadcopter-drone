@@ -23,7 +23,7 @@ uint16_t connect_flag = 1;
 uint8_t NRF24L01_Write_Reg(uint8_t reg, uint8_t data)
 {
     uint8_t status = 0;
-    /* 1、片选选中 */
+    /* 1、片选选中 *
     NRF24L01_CSN_LOW;
     /* 2、写寄存器地址 */
     status = Driver_SPI_SwapByte(reg);
